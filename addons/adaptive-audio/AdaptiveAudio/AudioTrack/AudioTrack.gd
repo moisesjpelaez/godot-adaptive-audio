@@ -62,7 +62,7 @@ func stop_track() -> void:
 		var layer_track: AudioStreamPlayer = layers.get_node(current_layer_name)
 		tween.interpolate_property(layer_track, "volume_db", layer_track.volume_db, -80, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	
-	tween.interpolate_property(base_track, "volume_db", base_track.volume_db, -80, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	tween.interpolate_property(base_track, "volume_db", base_track.volume_db, -80, 1.0, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	tween.start()
 	yield(tween, "tween_all_completed")
 	

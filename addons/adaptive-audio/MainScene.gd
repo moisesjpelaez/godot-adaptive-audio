@@ -1,13 +1,15 @@
 tool
-extends Node
+extends Control
 
 const AUDIO_TRACK_UI: PackedScene = preload("res://addons/adaptive-audio/AudioTrackUI/AudioTrackUI.tscn")
 
-onready var stop_button: Button = $VBoxContainer/HBoxContainer/Stop
-onready var add_button: Button = $VBoxContainer/HBoxContainer/Add
-onready var create_button: Button = $VBoxContainer/HBoxContainer/Create
+onready var buttons_container: HBoxContainer = $MainPanel/HBoxContainer
+onready var stop_button: Button = buttons_container.get_node("Stop")
+onready var add_button: Button = buttons_container.get_node("Add")
+onready var create_button: Button = buttons_container.get_node("Create")
 
-onready var audio_tracks: VBoxContainer = $VBoxContainer/AudioTracks
+onready var tracks_container: ScrollContainer = $MainPanel/AudioTracks
+onready var audio_tracks: VBoxContainer = tracks_container.get_node("VBoxContainer")
 
 onready var adaptive_audio: Node = $AdaptiveAudio
 

@@ -5,7 +5,7 @@ class_name AudioTrackUI
 const LAYER_TRACK: PackedScene = preload("res://addons/adaptive-audio/AudioTrackUI/LayerTrackUI/LayerTrackUI.tscn")
 
 onready var base_track_ui: Control = $Content/BaseTrackUI
-onready var layers: HBoxContainer = $Content/Layers
+onready var layers: HBoxContainer = $Content/Layers/HBoxContainer
 onready var add_layer_button: Button = $Content/AddLayer
 
 var current_track_name: String = ""
