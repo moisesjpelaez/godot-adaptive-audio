@@ -11,6 +11,7 @@ func play_track(track_name: String, layer_name: String = "") -> void:
 				current_track.stop_track()
 				yield(current_track, "track_stopped")
 			else:
+				current_track.transition_to(layer_name)
 				return
 
 	current_track = get_node(track_name)
