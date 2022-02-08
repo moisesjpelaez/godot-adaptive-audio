@@ -1,2 +1,2 @@
 # Godot Adaptive Audio
-Simple adaptive audio plugin currently in WIP.
+Simple adaptive audio plugin currently WIP.

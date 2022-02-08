@@ -39,7 +39,6 @@ _global_script_class_icons={
 [application]
 
 config/name="Adaptive Audio Plugin"
-run/main_scene="res://Test/Test.tscn"
 config/icon="res://icon.png"
 
 [editor_plugins]
