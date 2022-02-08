@@ -3,7 +3,7 @@ extends Control
 
 const AUDIO_TRACK_UI: PackedScene = preload("res://addons/adaptive-audio/AudioTrackUI/AudioTrackUI.tscn")
 
-onready var buttons_container: HBoxContainer = $MainPanel/HBoxContainer
+onready var buttons_container: HBoxContainer = $Buttons
 onready var stop_button: Button = buttons_container.get_node("Stop")
 onready var add_button: Button = buttons_container.get_node("Add")
 onready var create_button: Button = buttons_container.get_node("Create")

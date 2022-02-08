@@ -16,17 +16,17 @@ __meta__ = {
 [node name="MainPanel" type="HSplitContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 20.0
+margin_top = 15.0
+margin_right = -20.0
+margin_bottom = -45.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AudioTracks" type="ScrollContainer" parent="MainPanel"]
-margin_right = 723.0
-margin_bottom = 592.0
+margin_right = 984.0
+margin_bottom = 540.0
 size_flags_horizontal = 3
 scroll_horizontal_enabled = false
 __meta__ = {
@@ -34,44 +34,46 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/AudioTracks"]
-margin_right = 723.0
+margin_right = 984.0
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel"]
-margin_left = 735.0
-margin_right = 1016.0
-margin_bottom = 592.0
+[node name="Buttons" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -38.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Stop" type="Button" parent="MainPanel/HBoxContainer"]
-margin_top = 286.0
-margin_right = 89.0
-margin_bottom = 306.0
+[node name="Stop" type="Button" parent="Buttons"]
+margin_left = 371.0
+margin_top = 9.0
+margin_right = 460.0
+margin_bottom = 29.0
 size_flags_vertical = 4
 text = "Stop playing"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Add" type="Button" parent="MainPanel/HBoxContainer"]
-margin_left = 93.0
-margin_top = 286.0
-margin_right = 163.0
-margin_bottom = 306.0
+[node name="Add" type="Button" parent="Buttons"]
+margin_left = 464.0
+margin_top = 9.0
+margin_right = 534.0
+margin_bottom = 29.0
 size_flags_vertical = 4
 text = "AddTrack"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Create" type="Button" parent="MainPanel/HBoxContainer"]
-margin_left = 167.0
-margin_top = 286.0
-margin_right = 281.0
-margin_bottom = 306.0
+[node name="Create" type="Button" parent="Buttons"]
+margin_left = 538.0
+margin_top = 9.0
+margin_right = 652.0
+margin_bottom = 29.0
 size_flags_vertical = 4
 text = "Create Autoload"
 __meta__ = {
