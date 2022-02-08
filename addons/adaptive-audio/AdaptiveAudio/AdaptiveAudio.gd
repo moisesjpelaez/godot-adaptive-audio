@@ -5,15 +5,21 @@ const AUDIO_TRACK: PackedScene = preload("res://addons/adaptive-audio/AdaptiveAu
 var current_track: AudioTrack
 
 func play_track(track_name: String, layer_name: String = "") -> void:
+	if current_track != null:
+		if current_track.is_playing:
+			if current_track.name != track_name:
+				current_track.stop_track()
+				yield(current_track, "track_stopped")
+			else:
+				return
+
 	current_track = get_node(track_name)
 	current_track.play_track(layer_name)
-	
+
 func transition_to(track_name: String, layer_name: String = "") -> void:
 	if current_track.name == track_name:
 		current_track.transition_to(layer_name)
 	else:
-		current_track.stop_track()
-		yield(current_track, "track_stopped")
 		play_track(track_name, layer_name)
 
 func stop_track() -> void:
