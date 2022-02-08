@@ -1,4 +1,7 @@
 
+# Music folder for testing
+_music/
+
 # Godot-specific ignores
 .import/
 export.cfg

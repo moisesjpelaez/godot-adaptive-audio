@@ -1,0 +1,5 @@
+## LICENSE
+
+The project code is licensed under MIT - see license.txt for details.
+
+The Godot Engine is licensed under MIT - see godot_license.txt for details.

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/adaptive-audio/AdaptiveAudio/AudioTrack/AudioTrack.gd" type="Script" id=1]
+
+[node name="AudioTrack" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Content" type="Node" parent="."]
+
+[node name="BaseTrack" type="AudioStreamPlayer" parent="Content"]
+
+[node name="Layers" type="Node" parent="Content"]
+
+[node name="Tween" type="Tween" parent="."]

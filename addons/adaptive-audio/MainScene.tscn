@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/adaptive-audio/MainScene.gd" type="Script" id=2]
+[ext_resource path="res://addons/adaptive-audio/AdaptiveAudio/AdaptiveAudio.tscn" type="PackedScene" id=4]
+
+[node name="MainScene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioTracks" type="VBoxContainer" parent="VBoxContainer"]
+margin_right = 1024.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 4.0
+margin_right = 1024.0
+margin_bottom = 24.0
+alignment = 1
+
+[node name="Stop" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 371.0
+margin_right = 460.0
+margin_bottom = 20.0
+text = "Stop playing"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Add" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 464.0
+margin_right = 534.0
+margin_bottom = 20.0
+text = "AddTrack"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Create" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 538.0
+margin_right = 652.0
+margin_bottom = 20.0
+text = "Create Autoload"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AdaptiveAudio" parent="." instance=ExtResource( 4 )]
