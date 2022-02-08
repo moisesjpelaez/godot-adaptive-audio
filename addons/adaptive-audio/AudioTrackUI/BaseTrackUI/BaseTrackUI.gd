@@ -48,3 +48,12 @@ func _on_Update_pressed() -> void:
 
 func update_audio() -> void:
 	emit_signal("audio_updated", line_edit.text, stream_path)
+
+func can_drop_data(position: Vector2, data) -> bool:
+	return true
+	
+func drop_data(position: Vector2, data) -> void:
+	stream_path = data.files[0]
+	file_dialog.current_path = stream_path
+	file_label.text = file_dialog.current_file
+	update_audio()

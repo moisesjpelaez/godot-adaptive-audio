@@ -46,3 +46,12 @@ func _on_TransitionButton_pressed() -> void:
 
 func _on_RemoveButton_pressed() -> void:
 	emit_signal("track_removed", get_index())
+
+func can_drop_data(position: Vector2, data) -> bool:
+	return true
+	
+func drop_data(position: Vector2, data) -> void:
+	stream_path = data.files[0]
+	file_dialog.current_path = stream_path
+	file_label.text = file_dialog.current_file
+	emit_signal("audio_updated", get_index(), line_edit.text, stream_path)
