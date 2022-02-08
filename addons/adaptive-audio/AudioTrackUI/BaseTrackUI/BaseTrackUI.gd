@@ -3,7 +3,7 @@ extends VBoxContainer
 class_name BaseTrackUI
 
 onready var label: Label = $Label
-onready var line_edit: LineEdit = $LineEdit
+onready var line_edit: LineEdit = $TrackName
 
 onready var file_label: Label = $HBoxContainer/Label
 onready var select_audio_button: Button = $HBoxContainer/Select
@@ -28,6 +28,11 @@ func _ready() -> void:
 	remove_button.connect("pressed", self, "_on_Remove_pressed")
 	
 	line_edit.text = label.text
+	line_edit.editable = false
+	
+	line_edit.connect("focus_entered", self, "on_LineEdit_focus_entered")
+	line_edit.connect("focus_exited", self, "on_LineEdit_focus_exited")
+	
 
 func _on_Select_pressed() -> void:
 	file_dialog.popup_centered(Vector2(512, 384))
@@ -56,4 +61,11 @@ func drop_data(position: Vector2, data) -> void:
 	stream_path = data.files[0]
 	file_dialog.current_path = stream_path
 	file_label.text = file_dialog.current_file
+	update_audio()
+
+func on_LineEdit_focus_entered() -> void:
+	line_edit.editable = true
+
+func on_LineEdit_focus_exited() -> void:
+	line_edit.editable = false
 	update_audio()

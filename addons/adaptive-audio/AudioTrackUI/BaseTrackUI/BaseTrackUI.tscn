@@ -15,12 +15,15 @@ margin_right = 118.0
 margin_bottom = 14.0
 text = "Base Track"
 
-[node name="LineEdit" type="LineEdit" parent="."]
+[node name="TrackName" type="LineEdit" parent="."]
 margin_top = 18.0
 margin_right = 118.0
 margin_bottom = 42.0
 text = "Base Track"
-placeholder_text = "Name..."
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+placeholder_text = "Name"
+caret_blink = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_top = 46.0
@@ -66,3 +69,8 @@ popup_exclusive = true
 window_title = "Open a File"
 mode = 0
 show_hidden_files = true
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_top = 142.0
+margin_right = 118.0
+margin_bottom = 142.0

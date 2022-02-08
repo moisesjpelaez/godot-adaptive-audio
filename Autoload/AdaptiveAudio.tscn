@@ -36,43 +36,44 @@ volume_db = -80.0
 
 [node name="Tween" type="Tween" parent="Indoor"]
 
-[node name="asd" type="Node" parent="."]
+[node name="Outdoor" type="Node" parent="."]
 script = ExtResource( 2 )
 
-[node name="Content" type="Node" parent="asd"]
+[node name="Content" type="Node" parent="Outdoor"]
 
-[node name="BaseTrack" type="AudioStreamPlayer" parent="asd/Content"]
+[node name="BaseTrack" type="AudioStreamPlayer" parent="Outdoor/Content"]
 stream = ExtResource( 8 )
 volume_db = -80.0
 
-[node name="Layers" type="Node" parent="asd/Content"]
+[node name="Layers" type="Node" parent="Outdoor/Content"]
 
-[node name="vzcx" type="AudioStreamPlayer" parent="asd/Content/Layers"]
+[node name="Layer 0" type="AudioStreamPlayer" parent="Outdoor/Content/Layers"]
 stream = ExtResource( 10 )
 volume_db = -80.0
 
-[node name="asdgs" type="AudioStreamPlayer" parent="asd/Content/Layers"]
+[node name="Layer 1" type="AudioStreamPlayer" parent="Outdoor/Content/Layers"]
 stream = ExtResource( 3 )
 volume_db = -80.0
 
-[node name="Tween" type="Tween" parent="asd"]
+[node name="Tween" type="Tween" parent="Outdoor"]
 
-[node name="Base Track" type="Node" parent="."]
+[node name="Dual" type="Node" parent="."]
 script = ExtResource( 2 )
 
-[node name="Content" type="Node" parent="Base Track"]
+[node name="Content" type="Node" parent="Dual"]
 
-[node name="BaseTrack" type="AudioStreamPlayer" parent="Base Track/Content"]
-stream = ExtResource( 11 )
-
-[node name="Layers" type="Node" parent="Base Track/Content"]
-
-[node name="Layer 0" type="AudioStreamPlayer" parent="Base Track/Content/Layers"]
+[node name="BaseTrack" type="AudioStreamPlayer" parent="Dual/Content"]
 stream = ExtResource( 5 )
 volume_db = -80.0
 
-[node name="Layer 1" type="AudioStreamPlayer" parent="Base Track/Content/Layers"]
+[node name="Layers" type="Node" parent="Dual/Content"]
+
+[node name="Layer 0" type="AudioStreamPlayer" parent="Dual/Content/Layers"]
+stream = ExtResource( 11 )
+volume_db = -80.0
+
+[node name="Layer 1" type="AudioStreamPlayer" parent="Dual/Content/Layers"]
 stream = ExtResource( 6 )
 volume_db = -80.0
 
-[node name="Tween" type="Tween" parent="Base Track"]
+[node name="Tween" type="Tween" parent="Dual"]
