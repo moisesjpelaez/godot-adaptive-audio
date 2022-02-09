@@ -1,79 +1,55 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://addons/adaptive-audio/AdaptiveAudio/AdaptiveAudio.gd" type="Script" id=1]
-[ext_resource path="res://addons/adaptive-audio/AdaptiveAudio/AudioTrack/AudioTrack.gd" type="Script" id=2]
-[ext_resource path="res://_music/ForestCave/Pocket Box Music - Forest (Loopable).ogg" type="AudioStream" id=3]
-[ext_resource path="res://_music/HouseBasement/Pocket Box - Basement(Loopable).ogg" type="AudioStream" id=4]
-[ext_resource path="res://_music/DualPrison/prisionero_invicible_loop_chords.ogg" type="AudioStream" id=5]
-[ext_resource path="res://_music/DualPrison/prisionero_invicible_loop_half.ogg" type="AudioStream" id=6]
-[ext_resource path="res://_music/HouseBasement/Pocket Box - House(Loopable).ogg" type="AudioStream" id=7]
-[ext_resource path="res://_music/ForestCave/Pocket Box Music - Base (Loopable).ogg" type="AudioStream" id=8]
-[ext_resource path="res://_music/HouseBasement/Pocket Box - H+B Base(Loopable).ogg" type="AudioStream" id=9]
-[ext_resource path="res://_music/ForestCave/Pocket Box Music - Cave (Loopable).ogg" type="AudioStream" id=10]
-[ext_resource path="res://_music/DualPrison/preso_invicible_bateria_loop.ogg" type="AudioStream" id=11]
+[ext_resource path="res://_music/HouseBasement/Pocket Box - H+B Base(Loopable).ogg" type="AudioStream" id=2]
+[ext_resource path="res://_music/HouseBasement/Pocket Box - Basement(Loopable).ogg" type="AudioStream" id=3]
+[ext_resource path="res://_music/ForestCave/Pocket Box Music - Base (Loopable).ogg" type="AudioStream" id=4]
+[ext_resource path="res://_music/HouseBasement/Pocket Box - House(Loopable).ogg" type="AudioStream" id=5]
+[ext_resource path="res://_music/ForestCave/Pocket Box Music - Cave (Loopable).ogg" type="AudioStream" id=6]
+[ext_resource path="res://_music/ForestCave/Pocket Box Music - Forest (Loopable).ogg" type="AudioStream" id=7]
+[ext_resource path="res://addons/adaptive-audio/AdaptiveAudio/AudioTrack/AudioTrack.gd" type="Script" id=8]
 
 [node name="AdaptiveAudio" type="Node"]
 script = ExtResource( 1 )
 
 [node name="Indoor" type="Node" parent="."]
-script = ExtResource( 2 )
+script = ExtResource( 8 )
 
 [node name="Content" type="Node" parent="Indoor"]
 
 [node name="BaseTrack" type="AudioStreamPlayer" parent="Indoor/Content"]
-stream = ExtResource( 9 )
+stream = ExtResource( 2 )
 volume_db = -80.0
 
 [node name="Layers" type="Node" parent="Indoor/Content"]
 
-[node name="Layer 0" type="AudioStreamPlayer" parent="Indoor/Content/Layers"]
-stream = ExtResource( 4 )
+[node name="Basement" type="AudioStreamPlayer" parent="Indoor/Content/Layers"]
+stream = ExtResource( 3 )
 volume_db = -80.0
 
-[node name="Layer 1" type="AudioStreamPlayer" parent="Indoor/Content/Layers"]
-stream = ExtResource( 7 )
+[node name="House" type="AudioStreamPlayer" parent="Indoor/Content/Layers"]
+stream = ExtResource( 5 )
 volume_db = -80.0
 
 [node name="Tween" type="Tween" parent="Indoor"]
 
 [node name="Outdoor" type="Node" parent="."]
-script = ExtResource( 2 )
+script = ExtResource( 8 )
 
 [node name="Content" type="Node" parent="Outdoor"]
 
 [node name="BaseTrack" type="AudioStreamPlayer" parent="Outdoor/Content"]
-stream = ExtResource( 8 )
+stream = ExtResource( 4 )
 volume_db = -80.0
 
 [node name="Layers" type="Node" parent="Outdoor/Content"]
 
-[node name="Layer 0" type="AudioStreamPlayer" parent="Outdoor/Content/Layers"]
-stream = ExtResource( 10 )
-volume_db = -80.0
-
-[node name="Layer 1" type="AudioStreamPlayer" parent="Outdoor/Content/Layers"]
-stream = ExtResource( 3 )
-volume_db = -80.0
-
-[node name="Tween" type="Tween" parent="Outdoor"]
-
-[node name="Dual" type="Node" parent="."]
-script = ExtResource( 2 )
-
-[node name="Content" type="Node" parent="Dual"]
-
-[node name="BaseTrack" type="AudioStreamPlayer" parent="Dual/Content"]
-stream = ExtResource( 5 )
-volume_db = -80.0
-
-[node name="Layers" type="Node" parent="Dual/Content"]
-
-[node name="Layer 0" type="AudioStreamPlayer" parent="Dual/Content/Layers"]
-stream = ExtResource( 11 )
-volume_db = -80.0
-
-[node name="Layer 1" type="AudioStreamPlayer" parent="Dual/Content/Layers"]
+[node name="Cave" type="AudioStreamPlayer" parent="Outdoor/Content/Layers"]
 stream = ExtResource( 6 )
 volume_db = -80.0
 
-[node name="Tween" type="Tween" parent="Dual"]
+[node name="Forest" type="AudioStreamPlayer" parent="Outdoor/Content/Layers"]
+stream = ExtResource( 7 )
+volume_db = -80.0
+
+[node name="Tween" type="Tween" parent="Outdoor"]

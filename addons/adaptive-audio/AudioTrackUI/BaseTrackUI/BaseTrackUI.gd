@@ -1,17 +1,17 @@
 tool
-extends VBoxContainer
+extends Panel
 class_name BaseTrackUI
 
-onready var label: Label = $Label
-onready var line_edit: LineEdit = $TrackName
+onready var title: Label = $Content/Title
+onready var track_name_edit: LineEdit = $Content/TrackName
 
-onready var file_label: Label = $HBoxContainer/Label
-onready var select_audio_button: Button = $HBoxContainer/Select
+onready var file_label: Label = $Content/FileButtons/Label
+onready var select_audio_button: Button = $Content/FileButtons/Select
 onready var file_dialog: FileDialog = $FileDialog
 
-onready var update_button: Button = $Update
-onready var play_button: Button = $Play
-onready var remove_button: Button = $Remove
+onready var update_button: Button = $Content/TrackButtons/Update
+onready var play_button: Button = $Content/TrackButtons/Play
+onready var remove_button: Button = $Content/TrackButtons/Remove
 
 signal audio_updated(track_name, stream_path)
 signal track_started
@@ -27,11 +27,11 @@ func _ready() -> void:
 	play_button.connect("pressed", self, "_on_Play_pressed")
 	remove_button.connect("pressed", self, "_on_Remove_pressed")
 	
-	line_edit.text = label.text
-	line_edit.editable = false
+	track_name_edit.text = title.text
+	track_name_edit.editable = false
 	
-	line_edit.connect("focus_entered", self, "on_LineEdit_focus_entered")
-	line_edit.connect("focus_exited", self, "on_LineEdit_focus_exited")
+	track_name_edit.connect("focus_entered", self, "on_LineEdit_focus_entered")
+	track_name_edit.connect("focus_exited", self, "on_LineEdit_focus_exited")
 	
 
 func _on_Select_pressed() -> void:
@@ -52,7 +52,7 @@ func _on_Update_pressed() -> void:
 	update_audio()
 
 func update_audio() -> void:
-	emit_signal("audio_updated", line_edit.text, stream_path)
+	emit_signal("audio_updated", track_name_edit.text, stream_path)
 
 func can_drop_data(position: Vector2, data) -> bool:
 	return true
@@ -64,8 +64,8 @@ func drop_data(position: Vector2, data) -> void:
 	update_audio()
 
 func on_LineEdit_focus_entered() -> void:
-	line_edit.editable = true
+	track_name_edit.editable = true
 
 func on_LineEdit_focus_exited() -> void:
-	line_edit.editable = false
+	track_name_edit.editable = false
 	update_audio()

@@ -19,12 +19,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/adaptive-audio/AudioTrackUI/AudioTrackUI.gd"
 }, {
-"base": "VBoxContainer",
+"base": "Panel",
 "class": "BaseTrackUI",
 "language": "GDScript",
 "path": "res://addons/adaptive-audio/AudioTrackUI/BaseTrackUI/BaseTrackUI.gd"
 }, {
-"base": "VBoxContainer",
+"base": "Panel",
 "class": "LayerTrackUI",
 "language": "GDScript",
 "path": "res://addons/adaptive-audio/AudioTrackUI/LayerTrackUI/LayerTrackUI.gd"
@@ -41,6 +41,10 @@ _global_script_class_icons={
 config/name="Adaptive Audio Plugin"
 run/main_scene="res://addons/adaptive-audio/MainScene.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+AdaptiveAudio="*res://Autoload/AdaptiveAudio.tscn"
 
 [editor_plugins]
 

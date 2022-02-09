@@ -18,23 +18,39 @@ __meta__ = {
 
 [node name="Content" type="HBoxContainer" parent="."]
 margin_right = 1024.0
-margin_bottom = 138.0
+margin_bottom = 234.0
+custom_constants/separation = 8
 
 [node name="BaseTrackUI" parent="Content" instance=ExtResource( 1 )]
-margin_right = 118.0
-margin_bottom = 138.0
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Content"]
+margin_left = 261.0
+margin_right = 261.0
+margin_bottom = 234.0
 
 [node name="Layers" type="ScrollContainer" parent="Content"]
-margin_left = 122.0
-margin_right = 945.0
-margin_bottom = 138.0
+margin_left = 269.0
+margin_right = 933.0
+margin_bottom = 234.0
 size_flags_horizontal = 3
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Content/Layers"]
 
+[node name="HSplitContainer2" type="HSplitContainer" parent="Content"]
+margin_left = 941.0
+margin_right = 941.0
+margin_bottom = 234.0
+
 [node name="AddLayer" type="Button" parent="Content"]
 margin_left = 949.0
+margin_top = 107.0
 margin_right = 1024.0
-margin_bottom = 138.0
+margin_bottom = 127.0
+size_flags_vertical = 4
 text = "Add Layer"
+
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
+margin_top = 238.0
+margin_right = 1024.0
+margin_bottom = 238.0
