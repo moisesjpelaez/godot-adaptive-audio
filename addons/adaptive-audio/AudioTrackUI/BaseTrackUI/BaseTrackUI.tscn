@@ -3,34 +3,37 @@
 [ext_resource path="res://addons/adaptive-audio/AudioTrackUI/BaseTrackUI/BaseTrackUI.gd" type="Script" id=1]
 
 [node name="BaseTrackUI" type="Panel"]
-margin_right = 240.0
+margin_right = 200.0
 margin_bottom = 220.0
-rect_min_size = Vector2( 240, 220 )
+rect_min_size = Vector2( 200, 220 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Content" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -104.0
+margin_left = -84.0
 margin_top = -95.0
-margin_right = 105.0
+margin_right = 85.0
 margin_bottom = 95.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="Label" parent="Content"]
-margin_right = 209.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "Base Track"
 
 [node name="TrackName" type="LineEdit" parent="Content"]
 margin_top = 18.0
-margin_right = 209.0
+margin_right = 169.0
 margin_bottom = 42.0
 text = "Base Track"
 editable = false
@@ -42,13 +45,13 @@ caret_blink_speed = 0.5
 
 [node name="FileButtons" type="VBoxContainer" parent="Content"]
 margin_top = 46.0
-margin_right = 209.0
+margin_right = 169.0
 margin_bottom = 114.0
 size_flags_vertical = 3
 alignment = 2
 
 [node name="Label" type="Label" parent="Content/FileButtons"]
-margin_right = 209.0
+margin_right = 169.0
 margin_bottom = 44.0
 size_flags_vertical = 3
 text = "Drop audio file here..."
@@ -57,42 +60,42 @@ valign = 1
 autowrap = true
 
 [node name="Select" type="Button" parent="Content/FileButtons"]
-margin_left = 47.0
+margin_left = 27.0
 margin_top = 48.0
-margin_right = 161.0
+margin_right = 141.0
 margin_bottom = 68.0
 size_flags_horizontal = 4
 text = "Select audio file"
 
 [node name="VSplitContainer" type="VSplitContainer" parent="Content"]
 margin_top = 118.0
-margin_right = 209.0
+margin_right = 169.0
 margin_bottom = 118.0
 
 [node name="TrackButtons" type="VBoxContainer" parent="Content"]
 margin_top = 122.0
-margin_right = 209.0
+margin_right = 169.0
 margin_bottom = 190.0
 
 [node name="Update" type="Button" parent="Content/TrackButtons"]
-margin_left = 75.0
-margin_right = 133.0
+margin_left = 55.0
+margin_right = 113.0
 margin_bottom = 20.0
 size_flags_horizontal = 4
 text = "Update"
 
 [node name="Play" type="Button" parent="Content/TrackButtons"]
-margin_left = 68.0
+margin_left = 48.0
 margin_top = 24.0
-margin_right = 141.0
+margin_right = 121.0
 margin_bottom = 44.0
 size_flags_horizontal = 4
 text = "Play track"
 
 [node name="Remove" type="Button" parent="Content/TrackButtons"]
-margin_left = 55.0
+margin_left = 35.0
 margin_top = 48.0
-margin_right = 154.0
+margin_right = 134.0
 margin_bottom = 68.0
 size_flags_horizontal = 4
 text = "Remove track"
