@@ -51,4 +51,7 @@ func remove_layer_from_track(track_index: int, layer_index: int) -> void:
 	audio_track.remove_layer(layer_index)
 
 func remove_track(track_index: int) -> void:
-	get_child(track_index).queue_free()
+	var audio_track = get_child(track_index)
+	if current_track == audio_track:
+		current_track = null
+	audio_track.queue_free()
