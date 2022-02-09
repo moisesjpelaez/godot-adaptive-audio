@@ -32,9 +32,10 @@ func _ready() -> void:
 	track_name_edit.text = title.text
 	track_name_edit.editable = false
 	
-	track_name_edit.connect("focus_entered", self, "on_LineEdit_focus_entered")
-	track_name_edit.connect("focus_exited", self, "on_LineEdit_focus_exited")
+	track_name_edit.connect("focus_entered", self, "_on_LineEdit_focus_entered")
+	track_name_edit.connect("focus_exited", self, "_on_LineEdit_focus_exited")
 	
+	track_name_edit.connect("gui_input", self, "_on_LineEdit_gui_input")
 
 func _on_Select_pressed() -> void:
 	file_dialog.popup_centered(Vector2(512, 384))
@@ -65,9 +66,14 @@ func drop_data(position: Vector2, data) -> void:
 	file_label.text = file_dialog.current_file
 	update_audio()
 
-func on_LineEdit_focus_entered() -> void:
+func _on_LineEdit_gui_input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.pressed and event.scancode == KEY_ENTER:
+			track_name_edit.release_focus()
+
+func _on_LineEdit_focus_entered() -> void:
 	track_name_edit.editable = true
 
-func on_LineEdit_focus_exited() -> void:
+func _on_LineEdit_focus_exited() -> void:
 	track_name_edit.editable = false
 	update_audio()
