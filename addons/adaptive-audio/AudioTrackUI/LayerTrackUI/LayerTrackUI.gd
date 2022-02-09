@@ -27,7 +27,7 @@ func _ready() -> void:
 	transition_button.connect("pressed", self, "_on_TransitionButton_pressed")
 	remove_button.connect("pressed", self, "_on_RemoveButton_pressed")
 	
-	title.text = "Layer " + str(get_index())
+	title.text = "Layer" + str(get_index())
 	layer_name_edit.text = title.text
 	layer_name_edit.editable = false
 	

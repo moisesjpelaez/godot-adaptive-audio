@@ -20,6 +20,8 @@ signal track_removed
 var stream_path: String
 
 func _ready() -> void:
+	yield(owner, "ready")
+	
 	select_audio_button.connect("pressed", self, "_on_Select_pressed")
 	file_dialog.connect("file_selected", self, "_on_FileDialog_file_selected")
 	update_button.connect("pressed", self, "_on_Update_pressed")
