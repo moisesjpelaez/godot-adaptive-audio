@@ -29,13 +29,13 @@ __meta__ = {
 [node name="Title" type="Label" parent="Content"]
 margin_right = 170.0
 margin_bottom = 14.0
-text = "Layer 0"
+text = "Layer0"
 
 [node name="LayerName" type="LineEdit" parent="Content"]
 margin_top = 18.0
 margin_right = 170.0
 margin_bottom = 42.0
-text = "Layer 0"
+text = "Layer0"
 editable = false
 context_menu_enabled = false
 virtual_keyboard_enabled = false
@@ -107,4 +107,5 @@ rect_min_size = Vector2( 150, 52.5 )
 popup_exclusive = true
 window_title = "Open a File"
 mode = 0
+filters = PoolStringArray( "*.ogg", "*.wav", "*.mp3" )
 show_hidden_files = true

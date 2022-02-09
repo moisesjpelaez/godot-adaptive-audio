@@ -52,7 +52,7 @@ func _on_RemoveButton_pressed() -> void:
 	emit_signal("track_removed", get_index())
 
 func can_drop_data(position: Vector2, data) -> bool:
-	return true
+	return typeof(data.files[0]) == TYPE_STRING and (data.files[0].get_extension() == "ogg" or data.files[0].get_extension() == "wav" or data.files[0].get_extension() == "mp3")
 	
 func drop_data(position: Vector2, data) -> void:
 	stream_path = data.files[0]

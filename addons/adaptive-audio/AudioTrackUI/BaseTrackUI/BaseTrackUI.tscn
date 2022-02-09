@@ -111,4 +111,5 @@ size_flags_vertical = 3
 popup_exclusive = true
 window_title = "Open a File"
 mode = 0
+filters = PoolStringArray( "*.ogg", "*.wav", "*.mp3" )
 show_hidden_files = true

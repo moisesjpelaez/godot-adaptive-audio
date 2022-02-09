@@ -57,7 +57,7 @@ func update_audio() -> void:
 	emit_signal("audio_updated", track_name_edit.text, stream_path)
 
 func can_drop_data(position: Vector2, data) -> bool:
-	return true
+	return typeof(data.files[0]) == TYPE_STRING and (data.files[0].get_extension() == "ogg" or data.files[0].get_extension() == "wav" or data.files[0].get_extension() == "mp3")
 	
 func drop_data(position: Vector2, data) -> void:
 	stream_path = data.files[0]
