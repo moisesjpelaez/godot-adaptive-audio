@@ -67,7 +67,12 @@ func _on_Create_pressed() -> void:
 	
 	var adaptive_audio_scene = PackedScene.new()
 	adaptive_audio_scene.pack(adaptive_audio)
-	ResourceSaver.save("res://Autoload/AdaptiveAudio.tscn", adaptive_audio_scene)
+
+	var dir: Directory = Directory.new()
+	if !dir.dir_exists("res://addons/adaptive-audio/Autoload/"):
+		dir.make_dir("res://addons/adaptive-audio/Autoload/")
+
+	ResourceSaver.save("res://addons/adaptive-audio/Autoload/AdaptiveAudio.tscn", adaptive_audio_scene)
 
 func iterate_children(node: Node) -> void:
 	if node == null:

@@ -42,10 +42,6 @@ config/name="Adaptive Audio Plugin"
 run/main_scene="res://addons/adaptive-audio/MainScene.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-AdaptiveAudio="*res://Autoload/AdaptiveAudio.tscn"
-
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/adaptive-audio/plugin.cfg" )
