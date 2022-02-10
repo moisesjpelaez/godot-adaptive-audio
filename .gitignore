@@ -1,6 +1,7 @@
 
-# Music folder for testing
+# Testing folders
 _music/
+_test
 
 # Godot-specific ignores
 .import/
