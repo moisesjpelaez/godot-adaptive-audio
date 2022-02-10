@@ -3,7 +3,7 @@
 [ext_resource path="res://addons/adaptive-audio/MainScene.gd" type="Script" id=2]
 [ext_resource path="res://addons/adaptive-audio/AdaptiveAudio/AdaptiveAudio.tscn" type="PackedScene" id=4]
 
-[node name="MainScene" type="Control"]
+[node name="MainScene" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 480, 320 )

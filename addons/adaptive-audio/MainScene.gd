@@ -1,5 +1,5 @@
 tool
-extends Control
+extends Panel
 
 const AUDIO_TRACK_UI: PackedScene = preload("res://addons/adaptive-audio/AudioTrackUI/AudioTrackUI.tscn")
 

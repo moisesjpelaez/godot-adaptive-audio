@@ -8,7 +8,7 @@ anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -512.0
 margin_right = 512.0
-margin_bottom = 238.0
+margin_bottom = 244.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 3 )
@@ -16,45 +16,55 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Content" type="HBoxContainer" parent="."]
+[node name="TabContainer" type="TabContainer" parent="."]
 margin_right = 1024.0
-margin_bottom = 220.0
+margin_bottom = 232.0
+tab_align = 0
+tabs_visible = false
+
+[node name="Content" type="HBoxContainer" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 8.0
+margin_right = -4.0
+margin_bottom = -4.0
 custom_constants/separation = 4
 alignment = 1
 
-[node name="BaseTrackUI" parent="Content" instance=ExtResource( 1 )]
+[node name="BaseTrackUI" parent="TabContainer/Content" instance=ExtResource( 1 )]
 
-[node name="HSplitContainer" type="HSplitContainer" parent="Content"]
+[node name="HSplitContainer" type="HSplitContainer" parent="TabContainer/Content"]
 margin_left = 204.0
 margin_right = 204.0
 margin_bottom = 220.0
 
-[node name="Layers" type="ScrollContainer" parent="Content"]
+[node name="Layers" type="ScrollContainer" parent="TabContainer/Content"]
 margin_left = 208.0
-margin_right = 941.0
+margin_right = 933.0
 margin_bottom = 220.0
 size_flags_horizontal = 3
 scroll_vertical_enabled = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Content/Layers"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Content/Layers"]
 custom_constants/separation = 8
 alignment = 1
 
-[node name="HSplitContainer2" type="HSplitContainer" parent="Content"]
-margin_left = 945.0
-margin_right = 945.0
+[node name="HSplitContainer2" type="HSplitContainer" parent="TabContainer/Content"]
+margin_left = 937.0
+margin_right = 937.0
 margin_bottom = 220.0
 
-[node name="AddLayer" type="Button" parent="Content"]
-margin_left = 949.0
+[node name="AddLayer" type="Button" parent="TabContainer/Content"]
+margin_left = 941.0
 margin_top = 100.0
-margin_right = 1024.0
+margin_right = 1016.0
 margin_bottom = 120.0
 size_flags_vertical = 4
 text = "Add Layer"
 
 [node name="VSplitContainer" type="VSplitContainer" parent="."]
-margin_top = 224.0
+margin_top = 236.0
 margin_right = 1024.0
-margin_bottom = 232.0
+margin_bottom = 244.0
 rect_min_size = Vector2( 0, 8 )
