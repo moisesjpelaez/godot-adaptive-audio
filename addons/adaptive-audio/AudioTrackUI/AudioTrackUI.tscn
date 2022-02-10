@@ -39,16 +39,32 @@ margin_left = 204.0
 margin_right = 204.0
 margin_bottom = 220.0
 
-[node name="Layers" type="ScrollContainer" parent="TabContainer/Content"]
+[node name="Panel" type="Panel" parent="TabContainer/Content"]
 margin_left = 208.0
 margin_right = 933.0
 margin_bottom = 220.0
 size_flags_horizontal = 3
-scroll_vertical_enabled = false
+size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Content/Layers"]
+[node name="Layers" type="ScrollContainer" parent="TabContainer/Content/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+size_flags_horizontal = 3
+scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Content/Panel/Layers"]
 custom_constants/separation = 8
 alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HSplitContainer2" type="HSplitContainer" parent="TabContainer/Content"]
 margin_left = 937.0

@@ -1,5 +1,5 @@
 tool
-extends Panel
+extends Control
 class_name LayerTrackUI
 
 onready var title: Label = $Content/Title

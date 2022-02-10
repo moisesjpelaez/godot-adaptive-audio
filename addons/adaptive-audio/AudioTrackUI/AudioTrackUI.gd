@@ -5,7 +5,7 @@ class_name AudioTrackUI
 const LAYER_TRACK: PackedScene = preload("res://addons/adaptive-audio/AudioTrackUI/LayerTrackUI/LayerTrackUI.tscn")
 
 onready var base_track_ui: BaseTrackUI = $TabContainer/Content/BaseTrackUI
-onready var layers: HBoxContainer = $TabContainer/Content/Layers/HBoxContainer
+onready var layers: HBoxContainer = $TabContainer/Content/Panel/Layers/HBoxContainer
 onready var add_layer_button: Button = $TabContainer/Content/AddLayer
 
 var current_track_name: String = ""
@@ -31,7 +31,7 @@ func _ready() -> void:
 	base_track_ui.title.text = "BaseTrack" + str(get_index())
 
 func add_layer_track() -> void:
-	var new_controls: Control = LAYER_TRACK.instance()
+	var new_controls: LayerTrackUI = LAYER_TRACK.instance()
 	layers.add_child(new_controls)
 	new_controls.connect("audio_updated", self, "update_layer_track")
 	new_controls.connect("transitioned", self, "transition_to")

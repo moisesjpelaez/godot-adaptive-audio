@@ -24,7 +24,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/adaptive-audio/AudioTrackUI/BaseTrackUI/BaseTrackUI.gd"
 }, {
-"base": "Panel",
+"base": "Control",
 "class": "LayerTrackUI",
 "language": "GDScript",
 "path": "res://addons/adaptive-audio/AudioTrackUI/LayerTrackUI/LayerTrackUI.gd"
@@ -41,14 +41,6 @@ _global_script_class_icons={
 config/name="Adaptive Audio Plugin"
 run/main_scene="res://addons/adaptive-audio/MainScene.tscn"
 config/icon="res://icon.png"
-
-[autoload]
-
-AdaptiveAudio="*res://addons/adaptive-audio/Autoload/AdaptiveAudio.tscn"
-
-[editor_plugins]
-
-enabled=PoolStringArray( "res://addons/adaptive-audio/plugin.cfg" )
 
 [physics]
 
