@@ -3,15 +3,12 @@
 [ext_resource path="res://addons/adaptive-audio/AudioTrackUI/BaseTrackUI/BaseTrackUI.gd" type="Script" id=1]
 
 [node name="BaseTrackUI" type="Panel"]
-margin_right = 200.0
-margin_bottom = 220.0
-rect_min_size = Vector2( 200, 220 )
+margin_right = 250.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 250, 280 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Content" type="VBoxContainer" parent="."]
 anchor_left = 0.5

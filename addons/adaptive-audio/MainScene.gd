@@ -13,10 +13,12 @@ onready var audio_tracks: VBoxContainer = tracks_container.get_node("VBoxContain
 
 onready var adaptive_audio: Node = $AdaptiveAudio
 
+
 func _ready() -> void:
 	stop_button.connect("pressed", self, "_on_Stop_pressed")
 	add_button.connect("pressed", self, "_on_Add_pressed")
 	create_button.connect("pressed", self, "_on_Create_pressed")
+
 
 func _on_Add_pressed() -> void:
 	var audio_track_ui: AudioTrackUI = AUDIO_TRACK_UI.instance()
@@ -33,32 +35,42 @@ func _on_Add_pressed() -> void:
 	
 	add_track()
 
+
 func add_track() -> void:
 	adaptive_audio.add_track()
-	
+
+
 func update_track(track_index: int, track_name: String, path: String) -> void:
 	adaptive_audio.update_track(track_index, track_name, path)
+
 
 func add_layer(track_index: int) -> void:
 	adaptive_audio.add_layer_to_track(track_index)
 
+
 func update_layer(track_index: int, layer_index: int, new_name: String, new_path: String) -> void:
 	adaptive_audio.update_track_layer(track_index, layer_index, new_name, new_path)
+
 
 func remove_layer(track_index: int, layer_index: int) -> void:
 	adaptive_audio.remove_layer_from_track(track_index, layer_index)
 
+
 func remove_track(track_index: int) -> void:
 	adaptive_audio.remove_track(track_index)
+
 
 func play_track(track_name: String, layer_name: String = "") -> void:
 	adaptive_audio.play_track(track_name, layer_name)
 
+
 func transition_to(track_name: String, layer_name: String) -> void:
 	adaptive_audio.transition_to(track_name, layer_name)
 
+
 func _on_Stop_pressed() -> void:
 	adaptive_audio.stop_track()
+
 
 func _on_Create_pressed() -> void:
 	for node in adaptive_audio.get_children():
@@ -69,10 +81,11 @@ func _on_Create_pressed() -> void:
 	adaptive_audio_scene.pack(adaptive_audio)
 
 	var dir: Directory = Directory.new()
-	if !dir.dir_exists("res://addons/adaptive-audio/Autoload/"):
-		dir.make_dir("res://addons/adaptive-audio/Autoload/")
+	if !dir.dir_exists("res://Autoload/"):
+		dir.make_dir("res://Autoload/")
 
-	ResourceSaver.save("res://addons/adaptive-audio/Autoload/AdaptiveAudio.tscn", adaptive_audio_scene)
+	ResourceSaver.save("res://Autoload/AdaptiveAudio.tscn", adaptive_audio_scene)
+
 
 func iterate_children(node: Node) -> void:
 	if node == null:
