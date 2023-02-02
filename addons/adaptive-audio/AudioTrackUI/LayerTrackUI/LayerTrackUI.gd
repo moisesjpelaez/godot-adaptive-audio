@@ -3,20 +3,22 @@ extends Control
 class_name LayerTrackUI
 
 signal audio_updated(track_index, track_name, stream_path)
-signal transitioned(track_name)
-signal layer_played(layer_name)
+signal transitioned(track_name, fade_time)
+signal layer_played(layer_name, fade_time)
 signal track_removed(index)
 
 var stream_path: String
 
 onready var title: Label = $Content/Title
 onready var layer_name_edit: LineEdit = $Content/LayerName
+onready var fade_slider: HSlider = $Content/FadeTime
 
 onready var file_label: Label = $Content/FileButtons/Label
 onready var select_button: Button = $Content/FileButtons/Select
 
 onready var transition_button: Button = $Content/LayerButtons/Transition
 onready var play_layer_button: Button = $Content/LayerButtons/PlayLayer
+
 onready var set_button: Button = $Content/LayerButtons/Set
 onready var remove_button: Button = $Content/LayerButtons/RemoveLayer
 
@@ -27,8 +29,10 @@ func _ready() -> void:
 	select_button.connect("pressed", self, "_on_Select_pressed")
 	set_button.connect("pressed", self, "_on_Set_pressed")
 	file_dialog.connect("file_selected", self, "_on_FileDialog_file_selected")
-	transition_button.connect("pressed", self, "_on_TransitionButton_pressed")
-	play_layer_button.connect("pressed", self, "_on_PlayLayerButton_pressed")
+	
+	transition_button.connect("pressed", self, "_on_Transition_pressed")
+	play_layer_button.connect("pressed", self, "_on_PlayLayer_pressed")
+	
 	remove_button.connect("pressed", self, "_on_RemoveButton_pressed")
 	
 	title.text = "Layer" + str(get_index())
@@ -38,32 +42,6 @@ func _ready() -> void:
 	layer_name_edit.connect("focus_entered", self, "_on_LineEdit_focus_entered")
 	layer_name_edit.connect("focus_exited", self, "_on_LineEdit_focus_exited")
 	layer_name_edit.connect("gui_input", self, "_on_LineEdit_gui_input")
-
-
-func _on_Select_pressed() -> void:
-	file_dialog.popup_centered(Vector2(512, 384))
-
-
-func _on_FileDialog_file_selected(path: String) -> void:
-	stream_path = path
-	file_label.text = file_dialog.current_file
-	emit_signal("audio_updated", get_index(), layer_name_edit.text, stream_path)
-
-
-func _on_Set_pressed() -> void:
-	emit_signal("audio_updated", get_index(), layer_name_edit.text, stream_path)
-
-
-func _on_TransitionButton_pressed() -> void:
-	emit_signal("transitioned", layer_name_edit.text)
-
-
-func _on_PlayLayerButton_pressed() -> void:
-	emit_signal("layer_played", layer_name_edit.text)
-
-
-func _on_RemoveButton_pressed() -> void:
-	emit_signal("track_removed", get_index())
 
 
 func can_drop_data(position: Vector2, data) -> bool:
@@ -90,3 +68,29 @@ func _on_LineEdit_focus_entered() -> void:
 func _on_LineEdit_focus_exited() -> void:
 	layer_name_edit.editable = false
 	emit_signal("audio_updated", get_index(), layer_name_edit.text, stream_path)
+
+
+func _on_Select_pressed() -> void:
+	file_dialog.popup_centered(Vector2(512, 384))
+
+
+func _on_FileDialog_file_selected(path: String) -> void:
+	stream_path = path
+	file_label.text = file_dialog.current_file
+	emit_signal("audio_updated", get_index(), layer_name_edit.text, stream_path)
+
+
+func _on_Set_pressed() -> void:
+	emit_signal("audio_updated", get_index(), layer_name_edit.text, stream_path)
+
+
+func _on_Transition_pressed() -> void:
+	emit_signal("transitioned", layer_name_edit.text, fade_slider.value)
+
+
+func _on_PlayLayer_pressed() -> void:
+	emit_signal("layer_played", layer_name_edit.text, fade_slider.value)
+
+
+func _on_RemoveButton_pressed() -> void:
+	emit_signal("track_removed", get_index())

@@ -5,11 +5,11 @@ const AUDIO_TRACK: PackedScene = preload("res://addons/adaptive-audio/AdaptiveAu
 var current_track: AudioTrack
 
 
-func play_track(track_name: String, layer_name: String = "") -> void:
+func play_track(track_name: String, layer_name: String = "", fade_time: float = 0.5) -> void:
 	if current_track != null:
 		if current_track.is_playing:
 			if current_track.name != track_name:
-				current_track.stop_track()
+				current_track.stop_track(fade_time)
 				yield(current_track, "track_stopped")
 			else:
 				current_track.transition_to(layer_name)
@@ -19,7 +19,7 @@ func play_track(track_name: String, layer_name: String = "") -> void:
 	current_track.play_track(layer_name)
 
 
-func transition_to(track_name: String, layer_name: String = "") -> void:
+func transition_to(track_name: String, layer_name: String = "", fade_time: float = 0.5) -> void:
 	if current_track == null: 
 		return
 	
@@ -29,7 +29,7 @@ func transition_to(track_name: String, layer_name: String = "") -> void:
 		play_track(track_name, layer_name)
 
 
-func play_layer(track_name: String, layer_name: String = "") -> void:
+func play_layer(track_name: String, layer_name: String = "", fade_time: float = 0.5) -> void:
 	if current_track == null: 
 		return
 	
@@ -39,11 +39,11 @@ func play_layer(track_name: String, layer_name: String = "") -> void:
 		play_track(track_name, layer_name)
 
 
-func stop_track() -> void:
+func stop_track(fade_time: float = 0.5) -> void:
 	if current_track == null: 
 		return
 	
-	current_track.stop_track()
+	current_track.stop_track(fade_time)
 
 
 func add_track() -> void:

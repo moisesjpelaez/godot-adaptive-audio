@@ -7,10 +7,10 @@ signal layer_added(track_index)
 signal layer_updated(track_index, layer_index, new_name, new_path)
 signal layer_removed(track_index, layer_index)
 
-signal transitioned(track_name, layer_name)
-signal layer_played(track_name, layer_name)
+signal transitioned(track_name, layer_name, fade_time)
+signal layer_played(track_name, layer_name, fade_time)
 
-signal track_started(track_name, layer_name)
+signal track_started(track_name, layer_name, fade_time)
 signal track_removed(index)
 
 const LAYER_TRACK: PackedScene = preload("res://addons/adaptive-audio/AudioTrackUI/LayerTrackUI/LayerTrackUI.tscn")
@@ -47,12 +47,12 @@ func update_layer_track(layer_index: int, new_name: String, new_path: String) ->
 	emit_signal("layer_updated", get_index(), layer_index, new_name, new_path)
 
 
-func transition_to(layer_name: String) -> void:
-	emit_signal("transitioned", current_track_name, layer_name)
+func transition_to(layer_name: String, fade_time: float) -> void:
+	emit_signal("transitioned", current_track_name, layer_name, fade_time)
 
 
-func play_layer(layer_name: String) -> void:
-	emit_signal("layer_played", current_track_name, layer_name)
+func play_layer(layer_name: String, fade_time: float) -> void:
+	emit_signal("layer_played", current_track_name, layer_name, fade_time)
 
 
 func remove_layer_track(index: int) -> void:
@@ -60,8 +60,8 @@ func remove_layer_track(index: int) -> void:
 	emit_signal("layer_removed", get_index(), index)
 
 
-func play_pressed() -> void:
-	emit_signal("track_started", current_track_name)
+func play_pressed(fade_time: float) -> void:
+	emit_signal("track_started", current_track_name, "", fade_time)
 
 
 func remove_pressed() -> void:

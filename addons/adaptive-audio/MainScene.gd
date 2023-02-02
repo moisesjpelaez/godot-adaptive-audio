@@ -61,16 +61,16 @@ func remove_track(track_index: int) -> void:
 	adaptive_audio.remove_track(track_index)
 
 
-func play_track(track_name: String, layer_name: String = "") -> void:
-	adaptive_audio.play_track(track_name, layer_name)
+func play_track(track_name: String, layer_name: String, fade_time: float) -> void:
+	adaptive_audio.play_track(track_name, layer_name, fade_time)
 
 
-func transition_to(track_name: String, layer_name: String) -> void:
-	adaptive_audio.transition_to(track_name, layer_name)
+func transition_to(track_name: String, layer_name: String, fade_time: float) -> void:
+	adaptive_audio.transition_to(track_name, layer_name, fade_time)
 
 
-func play_layer(track_name: String, layer_name: String) -> void:
-	adaptive_audio.play_layer(track_name, layer_name)
+func play_layer(track_name: String, layer_name: String, fade_time: float) -> void:
+	adaptive_audio.play_layer(track_name, layer_name, fade_time)
 
 
 func _on_Stop_pressed() -> void:
