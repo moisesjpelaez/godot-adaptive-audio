@@ -4,6 +4,7 @@ class_name LayerTrackUI
 
 signal audio_updated(track_index, track_name, stream_path)
 signal transitioned(track_name)
+signal layer_played(layer_name)
 signal track_removed(index)
 
 var stream_path: String
@@ -15,6 +16,7 @@ onready var file_label: Label = $Content/FileButtons/Label
 onready var select_button: Button = $Content/FileButtons/Select
 
 onready var transition_button: Button = $Content/LayerButtons/Transition
+onready var play_layer_button: Button = $Content/LayerButtons/PlayLayer
 onready var set_button: Button = $Content/LayerButtons/Set
 onready var remove_button: Button = $Content/LayerButtons/RemoveLayer
 
@@ -26,6 +28,7 @@ func _ready() -> void:
 	set_button.connect("pressed", self, "_on_Set_pressed")
 	file_dialog.connect("file_selected", self, "_on_FileDialog_file_selected")
 	transition_button.connect("pressed", self, "_on_TransitionButton_pressed")
+	play_layer_button.connect("pressed", self, "_on_PlayLayerButton_pressed")
 	remove_button.connect("pressed", self, "_on_RemoveButton_pressed")
 	
 	title.text = "Layer" + str(get_index())
@@ -53,6 +56,10 @@ func _on_Set_pressed() -> void:
 
 func _on_TransitionButton_pressed() -> void:
 	emit_signal("transitioned", layer_name_edit.text)
+
+
+func _on_PlayLayerButton_pressed() -> void:
+	emit_signal("layer_played", layer_name_edit.text)
 
 
 func _on_RemoveButton_pressed() -> void:

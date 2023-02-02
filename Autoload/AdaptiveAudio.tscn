@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://addons/adaptive-audio/AdaptiveAudio/AdaptiveAudio.gd" type="Script" id=1]
+[ext_resource path="res://addons/adaptive-audio/AdaptiveAudio/AudioTrack/AudioTrack.gd" type="Script" id=2]
+[ext_resource path="res://_music/DualPrison/prisionero_invicible_loop_chords.ogg" type="AudioStream" id=3]
+[ext_resource path="res://_music/DualPrison/preso_invicible_bateria_loop.ogg" type="AudioStream" id=4]
+[ext_resource path="res://_music/DualPrison/prisionero_invicible_loop_half.ogg" type="AudioStream" id=5]
+
+[node name="AdaptiveAudio" type="Node"]
+script = ExtResource( 1 )
+
+[node name="ab" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Content" type="Node" parent="ab"]
+
+[node name="BaseTrack" type="AudioStreamPlayer" parent="ab/Content"]
+stream = ExtResource( 3 )
+volume_db = -80.0
+
+[node name="Layers" type="Node" parent="ab/Content"]
+
+[node name="c" type="AudioStreamPlayer" parent="ab/Content/Layers"]
+stream = ExtResource( 5 )
+volume_db = -80.0
+
+[node name="d" type="AudioStreamPlayer" parent="ab/Content/Layers"]
+stream = ExtResource( 4 )
+volume_db = -80.0
+
+[node name="Tween" type="Tween" parent="ab"]

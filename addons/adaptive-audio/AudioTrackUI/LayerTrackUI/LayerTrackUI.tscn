@@ -5,7 +5,7 @@
 [node name="LayerTrackUI" type="Control"]
 margin_right = 220.0
 margin_bottom = 250.0
-rect_min_size = Vector2( 230, 260 )
+rect_min_size = Vector2( 260, 300 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource( 1 )
@@ -31,13 +31,13 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="Content"]
-margin_right = 222.0
+margin_right = 252.0
 margin_bottom = 14.0
 text = "Layer0"
 
 [node name="LayerName" type="LineEdit" parent="Content"]
 margin_top = 18.0
-margin_right = 222.0
+margin_right = 252.0
 margin_bottom = 42.0
 text = "Layer0"
 editable = false
@@ -49,13 +49,13 @@ caret_blink_speed = 0.5
 
 [node name="FileButtons" type="VBoxContainer" parent="Content"]
 margin_top = 46.0
-margin_right = 222.0
-margin_bottom = 168.0
+margin_right = 252.0
+margin_bottom = 184.0
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="Content/FileButtons"]
-margin_right = 222.0
-margin_bottom = 98.0
+margin_right = 252.0
+margin_bottom = 114.0
 size_flags_vertical = 3
 text = "Drop audio file here..."
 align = 1
@@ -63,50 +63,58 @@ valign = 1
 autowrap = true
 
 [node name="Select" type="Button" parent="Content/FileButtons"]
-margin_left = 54.0
-margin_top = 102.0
-margin_right = 168.0
-margin_bottom = 122.0
+margin_left = 69.0
+margin_top = 118.0
+margin_right = 183.0
+margin_bottom = 138.0
 size_flags_horizontal = 4
 text = "Select audio file"
 
 [node name="VSplitContainer" type="VSplitContainer" parent="Content"]
-margin_top = 172.0
-margin_right = 222.0
-margin_bottom = 172.0
+margin_top = 188.0
+margin_right = 252.0
+margin_bottom = 188.0
 
 [node name="LayerButtons" type="VBoxContainer" parent="Content"]
-margin_top = 176.0
-margin_right = 222.0
-margin_bottom = 244.0
+margin_top = 192.0
+margin_right = 252.0
+margin_bottom = 284.0
 
 [node name="Set" type="Button" parent="Content/LayerButtons"]
-margin_left = 82.0
-margin_right = 140.0
+margin_left = 97.0
+margin_right = 155.0
 margin_bottom = 20.0
 size_flags_horizontal = 4
 text = "Update"
 
 [node name="Transition" type="Button" parent="Content/LayerButtons"]
-margin_left = 73.0
+margin_left = 88.0
 margin_top = 24.0
-margin_right = 148.0
+margin_right = 163.0
 margin_bottom = 44.0
 size_flags_horizontal = 4
 text = "Transition"
 
-[node name="RemoveLayer" type="Button" parent="Content/LayerButtons"]
-margin_left = 60.0
+[node name="PlayLayer" type="Button" parent="Content/LayerButtons"]
+margin_left = 88.0
 margin_top = 48.0
-margin_right = 162.0
+margin_right = 164.0
 margin_bottom = 68.0
+size_flags_horizontal = 4
+text = "Play Layer"
+
+[node name="RemoveLayer" type="Button" parent="Content/LayerButtons"]
+margin_left = 75.0
+margin_top = 72.0
+margin_right = 177.0
+margin_bottom = 92.0
 size_flags_horizontal = 4
 text = "Remove Layer"
 
 [node name="VSplitContainer2" type="VSplitContainer" parent="Content"]
-margin_top = 248.0
-margin_right = 222.0
-margin_bottom = 248.0
+margin_top = 288.0
+margin_right = 252.0
+margin_bottom = 288.0
 
 [node name="FileDialog" type="FileDialog" parent="."]
 anchor_right = 1.0

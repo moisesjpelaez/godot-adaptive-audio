@@ -32,6 +32,7 @@ func _on_Add_pressed() -> void:
 	
 	audio_track_ui.connect("track_started", self, "play_track")
 	audio_track_ui.connect("transitioned", self, "transition_to")
+	audio_track_ui.connect("layer_played", self, "play_layer")
 	
 	add_track()
 
@@ -68,6 +69,10 @@ func transition_to(track_name: String, layer_name: String) -> void:
 	adaptive_audio.transition_to(track_name, layer_name)
 
 
+func play_layer(track_name: String, layer_name: String) -> void:
+	adaptive_audio.play_layer(track_name, layer_name)
+
+
 func _on_Stop_pressed() -> void:
 	adaptive_audio.stop_track()
 
@@ -81,10 +86,10 @@ func _on_Create_pressed() -> void:
 	adaptive_audio_scene.pack(adaptive_audio)
 
 	var dir: Directory = Directory.new()
-	if !dir.dir_exists("res://Autoload/"):
-		dir.make_dir("res://Autoload/")
+	if !dir.dir_exists("res://autoload/"):
+		dir.make_dir("res://autoload/")
 
-	ResourceSaver.save("res://Autoload/AdaptiveAudio.tscn", adaptive_audio_scene)
+	ResourceSaver.save("res://autoload/adaptive_audio.tscn", adaptive_audio_scene)
 
 
 func iterate_children(node: Node) -> void:

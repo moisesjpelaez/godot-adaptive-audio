@@ -39,8 +39,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Adaptive Audio Plugin"
-run/main_scene="res://addons/adaptive-audio/MainScene.tscn"
+run/main_scene="res://_test/Test.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+AdaptiveAudio="*res://Autoload/AdaptiveAudio.tscn"
 
 [editor_plugins]
 

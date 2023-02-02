@@ -26,8 +26,8 @@ __meta__ = {
 }
 
 [node name="AudioTracks" type="ScrollContainer" parent="MainPanel"]
-margin_right = 1008.0
-margin_bottom = 552.0
+margin_right = 1904.0
+margin_bottom = 1032.0
 size_flags_horizontal = 3
 scroll_horizontal_enabled = false
 __meta__ = {
@@ -35,7 +35,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/AudioTracks"]
-margin_right = 1008.0
+margin_right = 1904.0
 size_flags_horizontal = 3
 
 [node name="Buttons" type="HBoxContainer" parent="."]
@@ -49,9 +49,9 @@ __meta__ = {
 }
 
 [node name="Stop" type="Button" parent="Buttons"]
-margin_left = 371.0
+margin_left = 819.0
 margin_top = 7.0
-margin_right = 460.0
+margin_right = 908.0
 margin_bottom = 27.0
 size_flags_vertical = 4
 text = "Stop playing"
@@ -60,9 +60,9 @@ __meta__ = {
 }
 
 [node name="Add" type="Button" parent="Buttons"]
-margin_left = 464.0
+margin_left = 912.0
 margin_top = 7.0
-margin_right = 534.0
+margin_right = 982.0
 margin_bottom = 27.0
 size_flags_vertical = 4
 text = "AddTrack"
@@ -71,9 +71,9 @@ __meta__ = {
 }
 
 [node name="Create" type="Button" parent="Buttons"]
-margin_left = 538.0
+margin_left = 986.0
 margin_top = 7.0
-margin_right = 652.0
+margin_right = 1100.0
 margin_bottom = 27.0
 size_flags_vertical = 4
 text = "Create Autoload"

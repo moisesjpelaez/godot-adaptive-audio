@@ -20,7 +20,8 @@ func play_track(track_name: String, layer_name: String = "") -> void:
 
 
 func transition_to(track_name: String, layer_name: String = "") -> void:
-	if current_track == null: return
+	if current_track == null: 
+		return
 	
 	if current_track.name == track_name:
 		current_track.transition_to(layer_name)
@@ -28,8 +29,20 @@ func transition_to(track_name: String, layer_name: String = "") -> void:
 		play_track(track_name, layer_name)
 
 
+func play_layer(track_name: String, layer_name: String = "") -> void:
+	if current_track == null: 
+		return
+	
+	if current_track.name == track_name:
+		current_track.play_layer(layer_name)
+	else:
+		play_track(track_name, layer_name)
+
+
 func stop_track() -> void:
-	if current_track == null: return
+	if current_track == null: 
+		return
+	
 	current_track.stop_track()
 
 
