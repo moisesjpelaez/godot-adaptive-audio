@@ -5,7 +5,7 @@
 [node name="BaseTrackUI" type="Panel"]
 margin_right = 250.0
 margin_bottom = 280.0
-rect_min_size = Vector2( 300, 320 )
+rect_min_size = Vector2( 320, 350 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource( 1 )
@@ -15,19 +15,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -90.0
-margin_top = -98.0
-margin_right = 90.0
-margin_bottom = 98.0
+margin_left = -141.0
+margin_top = -157.0
+margin_right = 141.0
+margin_bottom = 157.0
 
 [node name="Title" type="Label" parent="Content"]
-margin_right = 180.0
+margin_right = 282.0
 margin_bottom = 14.0
 text = "Base Track"
 
 [node name="TrackName" type="LineEdit" parent="Content"]
 margin_top = 18.0
-margin_right = 180.0
+margin_right = 282.0
 margin_bottom = 42.0
 text = "BaseTrack"
 editable = false
@@ -37,25 +37,46 @@ placeholder_text = "Name"
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="FadeTime" type="HSlider" parent="Content"]
+[node name="Label" type="Label" parent="Content"]
 margin_top = 46.0
-margin_right = 180.0
-margin_bottom = 62.0
-min_value = 0.1
-max_value = 1.0
+margin_right = 282.0
+margin_bottom = 60.0
+text = "Fade time:"
+
+[node name="FadeTime" type="HBoxContainer" parent="Content"]
+margin_top = 64.0
+margin_right = 282.0
+margin_bottom = 88.0
+
+[node name="SpinBox" type="SpinBox" parent="Content/FadeTime"]
+margin_right = 74.0
+margin_bottom = 24.0
+min_value = 0.01
+max_value = 10.0
 step = 0.01
-value = 0.5
+value = 2.0
+align = 2
+
+[node name="HSlider" type="HSlider" parent="Content/FadeTime"]
+margin_left = 78.0
+margin_right = 282.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+min_value = 0.01
+max_value = 10.0
+step = 0.01
+value = 2.0
 
 [node name="FileButtons" type="VBoxContainer" parent="Content"]
-margin_top = 66.0
-margin_right = 180.0
-margin_bottom = 120.0
+margin_top = 92.0
+margin_right = 282.0
+margin_bottom = 238.0
 size_flags_vertical = 3
 alignment = 2
 
 [node name="Label" type="Label" parent="Content/FileButtons"]
-margin_right = 180.0
-margin_bottom = 30.0
+margin_right = 282.0
+margin_bottom = 122.0
 size_flags_vertical = 3
 text = "Drop audio file here..."
 align = 1
@@ -63,42 +84,42 @@ valign = 1
 autowrap = true
 
 [node name="Select" type="Button" parent="Content/FileButtons"]
-margin_left = 33.0
-margin_top = 34.0
-margin_right = 147.0
-margin_bottom = 54.0
+margin_left = 84.0
+margin_top = 126.0
+margin_right = 198.0
+margin_bottom = 146.0
 size_flags_horizontal = 4
 text = "Select audio file"
 
 [node name="VSplitContainer" type="VSplitContainer" parent="Content"]
-margin_top = 124.0
-margin_right = 180.0
-margin_bottom = 124.0
+margin_top = 242.0
+margin_right = 282.0
+margin_bottom = 242.0
 
 [node name="TrackButtons" type="VBoxContainer" parent="Content"]
-margin_top = 128.0
-margin_right = 180.0
-margin_bottom = 196.0
+margin_top = 246.0
+margin_right = 282.0
+margin_bottom = 314.0
 
 [node name="Update" type="Button" parent="Content/TrackButtons"]
-margin_left = 61.0
-margin_right = 119.0
+margin_left = 112.0
+margin_right = 170.0
 margin_bottom = 20.0
 size_flags_horizontal = 4
 text = "Update"
 
 [node name="Play" type="Button" parent="Content/TrackButtons"]
-margin_left = 53.0
+margin_left = 104.0
 margin_top = 24.0
-margin_right = 126.0
+margin_right = 177.0
 margin_bottom = 44.0
 size_flags_horizontal = 4
 text = "Play track"
 
 [node name="Remove" type="Button" parent="Content/TrackButtons"]
-margin_left = 40.0
+margin_left = 91.0
 margin_top = 48.0
-margin_right = 139.0
+margin_right = 190.0
 margin_bottom = 68.0
 size_flags_horizontal = 4
 text = "Remove track"

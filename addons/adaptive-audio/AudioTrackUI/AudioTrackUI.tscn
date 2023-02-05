@@ -15,7 +15,7 @@ script = ExtResource( 3 )
 
 [node name="TabContainer" type="TabContainer" parent="."]
 margin_right = 1024.0
-margin_bottom = 332.0
+margin_bottom = 362.0
 tab_align = 0
 tabs_visible = false
 
@@ -30,13 +30,13 @@ custom_constants/separation = 4
 alignment = 1
 
 [node name="BaseTrackUI" parent="TabContainer/Content" instance=ExtResource( 1 )]
-margin_right = 300.0
-margin_bottom = 320.0
+margin_right = 320.0
+margin_bottom = 350.0
 
 [node name="Panel" type="Panel" parent="TabContainer/Content"]
-margin_left = 304.0
+margin_left = 324.0
 margin_right = 937.0
-margin_bottom = 320.0
+margin_bottom = 350.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -62,14 +62,14 @@ __meta__ = {
 
 [node name="AddLayer" type="Button" parent="TabContainer/Content"]
 margin_left = 941.0
-margin_top = 150.0
+margin_top = 165.0
 margin_right = 1016.0
-margin_bottom = 170.0
+margin_bottom = 185.0
 size_flags_vertical = 4
 text = "Add Layer"
 
 [node name="VSplitContainer" type="VSplitContainer" parent="."]
-margin_top = 336.0
+margin_top = 366.0
 margin_right = 1024.0
-margin_bottom = 344.0
+margin_bottom = 374.0
 rect_min_size = Vector2( 0, 8 )

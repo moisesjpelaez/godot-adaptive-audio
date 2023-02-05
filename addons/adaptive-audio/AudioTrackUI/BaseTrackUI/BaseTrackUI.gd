@@ -10,7 +10,9 @@ var stream_path: String
 
 onready var title: Label = $Content/Title
 onready var track_name_edit: LineEdit = $Content/TrackName
-onready var fade_slider: HSlider = $Content/FadeTime
+
+onready var fade_spin_box: SpinBox = $Content/FadeTime/SpinBox
+onready var fade_slider: HSlider = $Content/FadeTime/HSlider
 
 onready var file_label: Label = $Content/FileButtons/Label
 onready var select_audio_button: Button = $Content/FileButtons/Select
@@ -27,6 +29,9 @@ func _ready() -> void:
 	select_audio_button.connect("pressed", self, "_on_Select_pressed")
 	file_dialog.connect("file_selected", self, "_on_FileDialog_file_selected")
 	update_button.connect("pressed", self, "_on_Update_pressed")
+	
+	fade_spin_box.connect("value_changed", self, "_on_SpinBox_value_changed")
+	fade_slider.connect("value_changed", self, "_on_Slider_value_changed")
 	
 	play_button.connect("pressed", self, "_on_Play_pressed")
 	remove_button.connect("pressed", self, "_on_Remove_pressed")
@@ -69,6 +74,14 @@ func _on_LineEdit_focus_exited() -> void:
 	update_audio()
 
 
+func _on_SpinBox_value_changed(value: float) -> void:
+	fade_slider.value = value
+
+
+func _on_Slider_value_changed(value: float) -> void:
+	fade_spin_box.value = value
+
+
 func _on_Select_pressed() -> void:
 	file_dialog.popup_centered(Vector2(512, 384))
 
@@ -80,7 +93,7 @@ func _on_FileDialog_file_selected(path: String) -> void:
 
 
 func _on_Play_pressed() -> void:
-	emit_signal("track_started", fade_slider.value)
+	emit_signal("track_started", fade_spin_box.value)
 
 
 func _on_Remove_pressed() -> void:

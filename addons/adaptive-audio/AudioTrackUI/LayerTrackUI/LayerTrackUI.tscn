@@ -5,7 +5,7 @@
 [node name="LayerTrackUI" type="Control"]
 margin_right = 220.0
 margin_bottom = 250.0
-rect_min_size = Vector2( 260, 300 )
+rect_min_size = Vector2( 300, 340 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource( 1 )
@@ -26,20 +26,17 @@ margin_left = 4.0
 margin_top = 8.0
 margin_right = -4.0
 margin_bottom = -4.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Title" type="Label" parent="Content"]
-margin_right = 252.0
+margin_right = 292.0
 margin_bottom = 14.0
 text = "Layer0"
 
 [node name="LayerName" type="LineEdit" parent="Content"]
 margin_top = 18.0
-margin_right = 252.0
+margin_right = 292.0
 margin_bottom = 42.0
-text = "Layer"
+text = "Layer0"
 editable = false
 context_menu_enabled = false
 virtual_keyboard_enabled = false
@@ -47,24 +44,45 @@ placeholder_text = "Name"
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="FadeTime" type="HSlider" parent="Content"]
+[node name="FadeTimeLabel" type="Label" parent="Content"]
 margin_top = 46.0
-margin_right = 252.0
-margin_bottom = 62.0
-min_value = 0.1
-max_value = 1.0
+margin_right = 292.0
+margin_bottom = 60.0
+text = "Fade time:"
+
+[node name="FadeTime" type="HBoxContainer" parent="Content"]
+margin_top = 64.0
+margin_right = 292.0
+margin_bottom = 88.0
+
+[node name="SpinBox" type="SpinBox" parent="Content/FadeTime"]
+margin_right = 74.0
+margin_bottom = 24.0
+min_value = 0.01
+max_value = 10.0
 step = 0.01
-value = 0.5
+value = 2.0
+align = 2
+
+[node name="HSlider" type="HSlider" parent="Content/FadeTime"]
+margin_left = 78.0
+margin_right = 292.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+min_value = 0.01
+max_value = 10.0
+step = 0.01
+value = 2.0
 
 [node name="FileButtons" type="VBoxContainer" parent="Content"]
-margin_top = 66.0
-margin_right = 252.0
-margin_bottom = 184.0
+margin_top = 92.0
+margin_right = 292.0
+margin_bottom = 224.0
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="Content/FileButtons"]
-margin_right = 252.0
-margin_bottom = 94.0
+margin_right = 292.0
+margin_bottom = 108.0
 size_flags_vertical = 3
 text = "Drop audio file here..."
 align = 1
@@ -72,58 +90,58 @@ valign = 1
 autowrap = true
 
 [node name="Select" type="Button" parent="Content/FileButtons"]
-margin_left = 69.0
-margin_top = 98.0
-margin_right = 183.0
-margin_bottom = 118.0
+margin_left = 89.0
+margin_top = 112.0
+margin_right = 203.0
+margin_bottom = 132.0
 size_flags_horizontal = 4
 text = "Select audio file"
 
 [node name="VSplitContainer" type="VSplitContainer" parent="Content"]
-margin_top = 188.0
-margin_right = 252.0
-margin_bottom = 188.0
+margin_top = 228.0
+margin_right = 292.0
+margin_bottom = 228.0
 
 [node name="LayerButtons" type="VBoxContainer" parent="Content"]
-margin_top = 192.0
-margin_right = 252.0
-margin_bottom = 284.0
+margin_top = 232.0
+margin_right = 292.0
+margin_bottom = 324.0
 
 [node name="Set" type="Button" parent="Content/LayerButtons"]
-margin_left = 97.0
-margin_right = 155.0
+margin_left = 117.0
+margin_right = 175.0
 margin_bottom = 20.0
 size_flags_horizontal = 4
 text = "Update"
 
 [node name="Transition" type="Button" parent="Content/LayerButtons"]
-margin_left = 88.0
+margin_left = 108.0
 margin_top = 24.0
-margin_right = 163.0
+margin_right = 183.0
 margin_bottom = 44.0
 size_flags_horizontal = 4
 text = "Transition"
 
 [node name="PlayLayer" type="Button" parent="Content/LayerButtons"]
-margin_left = 88.0
+margin_left = 108.0
 margin_top = 48.0
-margin_right = 164.0
+margin_right = 184.0
 margin_bottom = 68.0
 size_flags_horizontal = 4
 text = "Play Layer"
 
 [node name="RemoveLayer" type="Button" parent="Content/LayerButtons"]
-margin_left = 75.0
+margin_left = 95.0
 margin_top = 72.0
-margin_right = 177.0
+margin_right = 197.0
 margin_bottom = 92.0
 size_flags_horizontal = 4
 text = "Remove Layer"
 
 [node name="VSplitContainer2" type="VSplitContainer" parent="Content"]
-margin_top = 288.0
-margin_right = 252.0
-margin_bottom = 288.0
+margin_top = 328.0
+margin_right = 292.0
+margin_bottom = 328.0
 
 [node name="FileDialog" type="FileDialog" parent="."]
 anchor_right = 1.0

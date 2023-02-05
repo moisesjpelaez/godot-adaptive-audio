@@ -11,7 +11,9 @@ var stream_path: String
 
 onready var title: Label = $Content/Title
 onready var layer_name_edit: LineEdit = $Content/LayerName
-onready var fade_slider: HSlider = $Content/FadeTime
+
+onready var fade_spin_box: SpinBox = $Content/FadeTime/SpinBox
+onready var fade_slider: HSlider = $Content/FadeTime/HSlider
 
 onready var file_label: Label = $Content/FileButtons/Label
 onready var select_button: Button = $Content/FileButtons/Select
@@ -29,6 +31,9 @@ func _ready() -> void:
 	select_button.connect("pressed", self, "_on_Select_pressed")
 	set_button.connect("pressed", self, "_on_Set_pressed")
 	file_dialog.connect("file_selected", self, "_on_FileDialog_file_selected")
+	
+	fade_spin_box.connect("value_changed", self, "_on_SpinBox_value_changed")
+	fade_slider.connect("value_changed", self, "_on_Slider_value_changed")
 	
 	transition_button.connect("pressed", self, "_on_Transition_pressed")
 	play_layer_button.connect("pressed", self, "_on_PlayLayer_pressed")
@@ -76,6 +81,14 @@ func _on_LineEdit_focus_exited() -> void:
 	emit_signal("audio_updated", get_index(), layer_name_edit.text, stream_path)
 
 
+func _on_SpinBox_value_changed(value: float) -> void:
+	fade_slider.value = value
+
+
+func _on_Slider_value_changed(value: float) -> void:
+	fade_spin_box.value = value
+
+
 func _on_Select_pressed() -> void:
 	file_dialog.popup_centered(Vector2(512, 384))
 
@@ -91,11 +104,11 @@ func _on_Set_pressed() -> void:
 
 
 func _on_Transition_pressed() -> void:
-	emit_signal("transitioned", layer_name_edit.text, fade_slider.value)
+	emit_signal("transitioned", layer_name_edit.text, fade_spin_box.value)
 
 
 func _on_PlayLayer_pressed() -> void:
-	emit_signal("layer_played", layer_name_edit.text, fade_slider.value)
+	emit_signal("layer_played", layer_name_edit.text, fade_spin_box.value)
 
 
 func _on_RemoveButton_pressed() -> void:

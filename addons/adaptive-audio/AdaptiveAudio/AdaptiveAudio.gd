@@ -12,7 +12,7 @@ func play_track(track_name: String, layer_name: String = "", fade_time: float = 
 				current_track.stop_track(fade_time)
 				yield(current_track, "track_stopped")
 			else:
-				current_track.transition_to(layer_name)
+				current_track.transition_to(layer_name, fade_time)
 				return
 
 	current_track = get_node(track_name)
@@ -23,25 +23,34 @@ func transition_to(track_name: String, layer_name: String = "", fade_time: float
 	if current_track == null: 
 		return
 	
+	if current_track.is_transitioning:
+		yield(current_track, "transition_ended")
+	
 	if current_track.name == track_name:
-		current_track.transition_to(layer_name)
+		current_track.transition_to(layer_name, fade_time)
 	else:
-		play_track(track_name, layer_name)
+		play_track(track_name, layer_name, fade_time)
 
 
 func play_layer(track_name: String, layer_name: String = "", fade_time: float = 0.5) -> void:
 	if current_track == null: 
 		return
 	
+	if current_track.is_transitioning:
+		yield(current_track, "transition_ended")
+	
 	if current_track.name == track_name:
-		current_track.play_layer(layer_name)
+		current_track.play_layer(layer_name, fade_time)
 	else:
-		play_track(track_name, layer_name)
+		play_track(track_name, layer_name, fade_time)
 
 
 func stop_track(fade_time: float = 0.5) -> void:
 	if current_track == null: 
 		return
+	
+	if current_track.is_transitioning:
+		yield(current_track, "transition_ended")
 	
 	current_track.stop_track(fade_time)
 
