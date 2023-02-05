@@ -7,6 +7,9 @@ onready var buttons_container: HBoxContainer = $Buttons
 onready var stop_button: Button = buttons_container.get_node("Stop")
 onready var add_button: Button = buttons_container.get_node("Add")
 onready var create_button: Button = buttons_container.get_node("Create")
+onready var load_button: Button = buttons_container.get_node("Load")
+
+onready var file_dialog: FileDialog = $FileDialog
 
 onready var tracks_container: ScrollContainer = $MainPanel/AudioTracks
 onready var audio_tracks: VBoxContainer = tracks_container.get_node("VBoxContainer")
@@ -18,23 +21,18 @@ func _ready() -> void:
 	stop_button.connect("pressed", self, "_on_Stop_pressed")
 	add_button.connect("pressed", self, "_on_Add_pressed")
 	create_button.connect("pressed", self, "_on_Create_pressed")
+	load_button.connect("pressed", self, "_on_Load_pressed")
+	file_dialog.connect("file_selected", self, "_on_FileDialog_file_selected")
+	
 
+func set_new_owner(node: Node) -> void:
+	if node == null:
+		return
 
-func _on_Add_pressed() -> void:
-	var audio_track_ui: AudioTrackUI = AUDIO_TRACK_UI.instance()
-	audio_tracks.add_child(audio_track_ui)
+	node.set_owner(adaptive_audio)
 	
-	audio_track_ui.connect("base_track_updated", self, "update_track")
-	audio_track_ui.connect("layer_added", self, "add_layer")
-	audio_track_ui.connect("layer_updated", self, "update_layer")
-	audio_track_ui.connect("layer_removed", self, "remove_layer")
-	audio_track_ui.connect("track_removed", self, "remove_track")
-	
-	audio_track_ui.connect("track_started", self, "play_track")
-	audio_track_ui.connect("transitioned", self, "transition_to")
-	audio_track_ui.connect("layer_played", self, "play_layer")
-	
-	add_track()
+	for child in node.get_children():
+		set_new_owner(child)
 
 
 func add_track() -> void:
@@ -73,6 +71,23 @@ func play_layer(track_name: String, layer_name: String, fade_time: float) -> voi
 	adaptive_audio.play_layer(track_name, layer_name, fade_time)
 
 
+func _on_Add_pressed() -> void:
+	var audio_track_ui: AudioTrackUI = AUDIO_TRACK_UI.instance()
+	audio_tracks.add_child(audio_track_ui)
+	
+	audio_track_ui.connect("base_track_updated", self, "update_track")
+	audio_track_ui.connect("layer_added", self, "add_layer")
+	audio_track_ui.connect("layer_updated", self, "update_layer")
+	audio_track_ui.connect("layer_removed", self, "remove_layer")
+	audio_track_ui.connect("track_removed", self, "remove_track")
+	
+	audio_track_ui.connect("track_started", self, "play_track")
+	audio_track_ui.connect("transitioned", self, "transition_to")
+	audio_track_ui.connect("layer_played", self, "play_layer")
+	
+	add_track()
+
+
 func _on_Stop_pressed() -> void:
 	adaptive_audio.stop_track()
 
@@ -80,9 +95,9 @@ func _on_Stop_pressed() -> void:
 func _on_Create_pressed() -> void:
 	for node in adaptive_audio.get_children():
 		node.set_filename("")
-		iterate_children(node)
+		set_new_owner(node)
 	
-	var adaptive_audio_scene = PackedScene.new()
+	var adaptive_audio_scene: PackedScene = PackedScene.new()
 	adaptive_audio_scene.pack(adaptive_audio)
 
 	var dir: Directory = Directory.new()
@@ -92,11 +107,28 @@ func _on_Create_pressed() -> void:
 	ResourceSaver.save("res://autoload/adaptive_audio.tscn", adaptive_audio_scene)
 
 
-func iterate_children(node: Node) -> void:
-	if node == null:
-		return
+func _on_Load_pressed() -> void:
+	file_dialog.popup_centered(Vector2(512, 384))
 
-	node.set_owner(adaptive_audio)
+
+func _on_FileDialog_file_selected(path: String) -> void:
+	for audio_track in audio_tracks.get_children():
+		audio_track.remove_pressed()
+		yield(audio_track, "tree_exited")
+
+	var adaptive_audio_node: Node = load(path).instance()
 	
-	for child in node.get_children():
-		iterate_children(child)
+	for i in adaptive_audio_node.get_children().size():
+		_on_Add_pressed()
+		var audio_track: AudioTrack = adaptive_audio_node.get_child(i)
+		var audio_track_ui: AudioTrackUI = audio_tracks.get_child(i)
+		audio_track_ui.set_base_track_name(audio_track.name)
+		audio_track_ui.set_current_track_name(audio_track.name, audio_track.get_node("Content/BaseTrack").stream.resource_path)
+		
+		for j in audio_track.get_node("Content/Layers").get_child_count():
+			var layer_track: AudioStreamPlayer = audio_track.get_node("Content/Layers").get_child(j)
+			var layer_track_ui: LayerTrackUI = audio_track_ui.add_layer_track()
+			layer_track_ui.set_layer_name(layer_track.name)
+			layer_track_ui.emit_signal("audio_updated", j, layer_track.name, layer_track.stream.resource_path)
+	
+	adaptive_audio_node.queue_free()

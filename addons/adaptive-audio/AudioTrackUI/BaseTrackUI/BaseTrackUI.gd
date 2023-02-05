@@ -31,13 +31,16 @@ func _ready() -> void:
 	play_button.connect("pressed", self, "_on_Play_pressed")
 	remove_button.connect("pressed", self, "_on_Remove_pressed")
 	
-	track_name_edit.text = title.text
 	track_name_edit.editable = false
 	
 	track_name_edit.connect("focus_entered", self, "_on_LineEdit_focus_entered")
 	track_name_edit.connect("focus_exited", self, "_on_LineEdit_focus_exited")
 	
 	track_name_edit.connect("gui_input", self, "_on_LineEdit_gui_input")
+
+
+func update_audio() -> void:
+	emit_signal("audio_updated", track_name_edit.text, stream_path)
 
 
 func can_drop_data(position: Vector2, data) -> bool:
@@ -86,7 +89,3 @@ func _on_Remove_pressed() -> void:
 
 func _on_Update_pressed() -> void:
 	update_audio()
-
-
-func update_audio() -> void:
-	emit_signal("audio_updated", track_name_edit.text, stream_path)

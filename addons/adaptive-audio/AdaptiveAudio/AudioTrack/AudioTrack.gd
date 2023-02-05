@@ -42,15 +42,6 @@ func transition_to(layer_name: String = "", fade_time: float = 0.5) -> void:
 			tween.interpolate_property(layer_track, "volume_db", layer_track.volume_db, 0, fade_time, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 			tween.start()
 			yield(tween, "tween_all_completed")
-#	else:
-#		if active_layers.size() != 0:
-#			for current_layer_name in active_layers:
-#				if current_layer_name == layer_name:
-#					continue
-#				var current_layer_track: AudioStreamPlayer = layers.get_node(current_layer_name)
-#				tween.interpolate_property(current_layer_track, "volume_db", current_layer_track.volume_db, -80, fade_time, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-#			tween.start()
-#			yield(tween, "tween_all_completed")
 	
 	if active_layers.size() != 0:
 		for current_layer_name in active_layers:

@@ -36,12 +36,18 @@ func _ready() -> void:
 	remove_button.connect("pressed", self, "_on_RemoveButton_pressed")
 	
 	title.text = "Layer" + str(get_index())
+	
 	layer_name_edit.text = title.text
 	layer_name_edit.editable = false
 	
 	layer_name_edit.connect("focus_entered", self, "_on_LineEdit_focus_entered")
 	layer_name_edit.connect("focus_exited", self, "_on_LineEdit_focus_exited")
 	layer_name_edit.connect("gui_input", self, "_on_LineEdit_gui_input")
+
+
+func set_layer_name(value: String) -> void:
+	layer_name_edit.text = value
+	layer_name_edit.editable = false
 
 
 func can_drop_data(position: Vector2, data) -> bool:

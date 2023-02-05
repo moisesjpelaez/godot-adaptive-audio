@@ -33,7 +33,12 @@ func _ready() -> void:
 	base_track_ui.title.text = "BaseTrack" + str(get_index())
 
 
-func add_layer_track() -> void:
+func set_base_track_name(value: String = "BaseTrack") -> void:
+	base_track_ui.track_name_edit.text = value
+	base_track_ui.track_name_edit.editable = false
+
+
+func add_layer_track() -> LayerTrackUI:
 	var new_controls: LayerTrackUI = LAYER_TRACK.instance()
 	layers.add_child(new_controls)
 	new_controls.connect("audio_updated", self, "update_layer_track")
@@ -41,6 +46,7 @@ func add_layer_track() -> void:
 	new_controls.connect("layer_played", self, "play_layer")
 	new_controls.connect("track_removed", self, "remove_layer_track")
 	emit_signal("layer_added", get_index())
+	return new_controls
 
 
 func update_layer_track(layer_index: int, new_name: String, new_path: String) -> void:
