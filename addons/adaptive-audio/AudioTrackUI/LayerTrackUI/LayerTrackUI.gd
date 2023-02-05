@@ -4,7 +4,7 @@ class_name LayerTrackUI
 
 signal audio_updated(track_index, track_name, stream_path)
 signal transitioned(track_name, fade_time)
-signal layer_played(layer_name, fade_time)
+signal blended(layer_name, fade_time)
 signal track_removed(index)
 
 var stream_path: String
@@ -19,7 +19,7 @@ onready var file_label: Label = $Content/FileButtons/Label
 onready var select_button: Button = $Content/FileButtons/Select
 
 onready var transition_button: Button = $Content/LayerButtons/Transition
-onready var play_layer_button: Button = $Content/LayerButtons/PlayLayer
+onready var blend_button: Button = $Content/LayerButtons/Blend
 
 onready var set_button: Button = $Content/LayerButtons/Set
 onready var remove_button: Button = $Content/LayerButtons/RemoveLayer
@@ -36,7 +36,7 @@ func _ready() -> void:
 	fade_slider.connect("value_changed", self, "_on_Slider_value_changed")
 	
 	transition_button.connect("pressed", self, "_on_Transition_pressed")
-	play_layer_button.connect("pressed", self, "_on_PlayLayer_pressed")
+	blend_button.connect("pressed", self, "_on_Blend_pressed")
 	
 	remove_button.connect("pressed", self, "_on_RemoveButton_pressed")
 	
@@ -107,8 +107,8 @@ func _on_Transition_pressed() -> void:
 	emit_signal("transitioned", layer_name_edit.text, fade_spin_box.value)
 
 
-func _on_PlayLayer_pressed() -> void:
-	emit_signal("layer_played", layer_name_edit.text, fade_spin_box.value)
+func _on_Blend_pressed() -> void:
+	emit_signal("blended", layer_name_edit.text, fade_spin_box.value)
 
 
 func _on_RemoveButton_pressed() -> void:

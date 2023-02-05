@@ -60,7 +60,7 @@ func transition_to(layer_name: String = "", fade_time: float = 0.5) -> void:
 	emit_signal("transition_ended")
 
 
-func play_layer(layer_name: String = "", fade_time: float = 0.5) -> void:
+func blend_layer(layer_name: String = "", fade_time: float = 0.5) -> void:
 	if layer_name != "":
 		var layer_track: AudioStreamPlayer = layers.get_node(layer_name)
 		

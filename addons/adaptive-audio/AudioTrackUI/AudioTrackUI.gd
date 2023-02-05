@@ -8,7 +8,7 @@ signal layer_updated(track_index, layer_index, new_name, new_path)
 signal layer_removed(track_index, layer_index)
 
 signal transitioned(track_name, layer_name, fade_time)
-signal layer_played(track_name, layer_name, fade_time)
+signal blended(track_name, layer_name, fade_time)
 
 signal track_started(track_name, layer_name, fade_time)
 signal track_removed(index)
@@ -43,7 +43,7 @@ func add_layer_track() -> LayerTrackUI:
 	layers.add_child(new_controls)
 	new_controls.connect("audio_updated", self, "update_layer_track")
 	new_controls.connect("transitioned", self, "transition_to")
-	new_controls.connect("layer_played", self, "play_layer")
+	new_controls.connect("blended", self, "blend_layer")
 	new_controls.connect("track_removed", self, "remove_layer_track")
 	emit_signal("layer_added", get_index())
 	return new_controls
@@ -57,8 +57,8 @@ func transition_to(layer_name: String, fade_time: float) -> void:
 	emit_signal("transitioned", current_track_name, layer_name, fade_time)
 
 
-func play_layer(layer_name: String, fade_time: float) -> void:
-	emit_signal("layer_played", current_track_name, layer_name, fade_time)
+func blend_layer(layer_name: String, fade_time: float) -> void:
+	emit_signal("blended", current_track_name, layer_name, fade_time)
 
 
 func remove_layer_track(index: int) -> void:

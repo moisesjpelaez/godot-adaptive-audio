@@ -32,7 +32,7 @@ func transition_to(track_name: String, layer_name: String = "", fade_time: float
 		play_track(track_name, layer_name, fade_time)
 
 
-func play_layer(track_name: String, layer_name: String = "", fade_time: float = 0.5) -> void:
+func blend_layer(track_name: String, layer_name: String = "", fade_time: float = 0.5) -> void:
 	if current_track == null: 
 		return
 	
@@ -40,7 +40,7 @@ func play_layer(track_name: String, layer_name: String = "", fade_time: float = 
 		yield(current_track, "transition_ended")
 	
 	if current_track.name == track_name:
-		current_track.play_layer(layer_name, fade_time)
+		current_track.blend_layer(layer_name, fade_time)
 	else:
 		play_track(track_name, layer_name, fade_time)
 

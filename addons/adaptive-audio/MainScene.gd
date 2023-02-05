@@ -67,8 +67,8 @@ func transition_to(track_name: String, layer_name: String, fade_time: float) -> 
 	adaptive_audio.transition_to(track_name, layer_name, fade_time)
 
 
-func play_layer(track_name: String, layer_name: String, fade_time: float) -> void:
-	adaptive_audio.play_layer(track_name, layer_name, fade_time)
+func blend_layer(track_name: String, layer_name: String, fade_time: float) -> void:
+	adaptive_audio.blend_layer(track_name, layer_name, fade_time)
 
 
 func _on_Add_pressed() -> void:
@@ -83,7 +83,7 @@ func _on_Add_pressed() -> void:
 	
 	audio_track_ui.connect("track_started", self, "play_track")
 	audio_track_ui.connect("transitioned", self, "transition_to")
-	audio_track_ui.connect("layer_played", self, "play_layer")
+	audio_track_ui.connect("blended", self, "blend_layer")
 	
 	add_track()
 

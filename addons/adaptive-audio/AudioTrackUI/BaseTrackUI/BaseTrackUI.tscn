@@ -70,13 +70,13 @@ value = 2.0
 [node name="FileButtons" type="VBoxContainer" parent="Content"]
 margin_top = 92.0
 margin_right = 282.0
-margin_bottom = 238.0
+margin_bottom = 262.0
 size_flags_vertical = 3
 alignment = 2
 
 [node name="Label" type="Label" parent="Content/FileButtons"]
 margin_right = 282.0
-margin_bottom = 122.0
+margin_bottom = 146.0
 size_flags_vertical = 3
 text = "Drop audio file here..."
 align = 1
@@ -85,23 +85,24 @@ autowrap = true
 
 [node name="Select" type="Button" parent="Content/FileButtons"]
 margin_left = 84.0
-margin_top = 126.0
+margin_top = 150.0
 margin_right = 198.0
-margin_bottom = 146.0
+margin_bottom = 170.0
 size_flags_horizontal = 4
 text = "Select audio file"
 
 [node name="VSplitContainer" type="VSplitContainer" parent="Content"]
-margin_top = 242.0
+margin_top = 266.0
 margin_right = 282.0
-margin_bottom = 242.0
+margin_bottom = 266.0
 
 [node name="TrackButtons" type="VBoxContainer" parent="Content"]
-margin_top = 246.0
+margin_top = 270.0
 margin_right = 282.0
 margin_bottom = 314.0
 
 [node name="Update" type="Button" parent="Content/TrackButtons"]
+visible = false
 margin_left = 112.0
 margin_right = 170.0
 margin_bottom = 20.0
@@ -110,17 +111,16 @@ text = "Update"
 
 [node name="Play" type="Button" parent="Content/TrackButtons"]
 margin_left = 104.0
-margin_top = 24.0
 margin_right = 177.0
-margin_bottom = 44.0
+margin_bottom = 20.0
 size_flags_horizontal = 4
 text = "Play track"
 
 [node name="Remove" type="Button" parent="Content/TrackButtons"]
 margin_left = 91.0
-margin_top = 48.0
+margin_top = 24.0
 margin_right = 190.0
-margin_bottom = 68.0
+margin_bottom = 44.0
 size_flags_horizontal = 4
 text = "Remove track"
 
