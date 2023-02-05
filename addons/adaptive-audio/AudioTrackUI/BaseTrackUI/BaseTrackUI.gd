@@ -36,6 +36,7 @@ func _ready() -> void:
 	play_button.connect("pressed", self, "_on_Play_pressed")
 	remove_button.connect("pressed", self, "_on_Remove_pressed")
 	
+	track_name_edit.text = title.text
 	track_name_edit.editable = false
 	
 	track_name_edit.connect("focus_entered", self, "_on_LineEdit_focus_entered")
