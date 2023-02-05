@@ -43,9 +43,9 @@ margin_top = -35.0
 alignment = 1
 
 [node name="Stop" type="Button" parent="Buttons"]
-margin_left = 328.0
+margin_left = 324.0
 margin_top = 7.0
-margin_right = 417.0
+margin_right = 413.0
 margin_bottom = 27.0
 size_flags_vertical = 4
 text = "Stop playing"
@@ -54,9 +54,9 @@ __meta__ = {
 }
 
 [node name="Add" type="Button" parent="Buttons"]
-margin_left = 421.0
+margin_left = 417.0
 margin_top = 7.0
-margin_right = 491.0
+margin_right = 487.0
 margin_bottom = 27.0
 size_flags_vertical = 4
 text = "AddTrack"
@@ -64,24 +64,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Create" type="Button" parent="Buttons"]
-margin_left = 495.0
+[node name="Save" type="Button" parent="Buttons"]
+margin_left = 491.0
 margin_top = 7.0
-margin_right = 609.0
+margin_right = 593.0
 margin_bottom = 27.0
 size_flags_vertical = 4
-text = "Create Autoload"
+text = "Save Autoload"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Load" type="Button" parent="Buttons"]
-margin_left = 613.0
+margin_left = 597.0
 margin_top = 7.0
-margin_right = 695.0
+margin_right = 700.0
 margin_bottom = 27.0
 size_flags_vertical = 4
-text = "Load Setup"
+text = "Load Autoload"
 __meta__ = {
 "_edit_use_anchors_": false
 }

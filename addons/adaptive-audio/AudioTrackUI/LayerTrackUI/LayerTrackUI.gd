@@ -50,9 +50,13 @@ func _ready() -> void:
 	layer_name_edit.connect("gui_input", self, "_on_LineEdit_gui_input")
 
 
-func set_layer_name(value: String) -> void:
+func set_layer_data(value: String, path: String) -> void:
 	layer_name_edit.text = value
 	layer_name_edit.editable = false
+	
+	stream_path = path
+	file_dialog.current_path = path
+	file_label.text = file_dialog.current_file
 
 
 func can_drop_data(position: Vector2, data) -> bool:

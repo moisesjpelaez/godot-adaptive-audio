@@ -6,7 +6,7 @@ const AUDIO_TRACK_UI: PackedScene = preload("res://addons/adaptive-audio/AudioTr
 onready var buttons_container: HBoxContainer = $Buttons
 onready var stop_button: Button = buttons_container.get_node("Stop")
 onready var add_button: Button = buttons_container.get_node("Add")
-onready var create_button: Button = buttons_container.get_node("Create")
+onready var save_button: Button = buttons_container.get_node("Save")
 onready var load_button: Button = buttons_container.get_node("Load")
 
 onready var file_dialog: FileDialog = $FileDialog
@@ -20,7 +20,7 @@ onready var adaptive_audio: Node = $AdaptiveAudio
 func _ready() -> void:
 	stop_button.connect("pressed", self, "_on_Stop_pressed")
 	add_button.connect("pressed", self, "_on_Add_pressed")
-	create_button.connect("pressed", self, "_on_Create_pressed")
+	save_button.connect("pressed", self, "_on_Save_pressed")
 	load_button.connect("pressed", self, "_on_Load_pressed")
 	file_dialog.connect("file_selected", self, "_on_FileDialog_file_selected")
 	
@@ -92,7 +92,7 @@ func _on_Stop_pressed() -> void:
 	adaptive_audio.stop_track()
 
 
-func _on_Create_pressed() -> void:
+func _on_Save_pressed() -> void:
 	for node in adaptive_audio.get_children():
 		node.set_filename("")
 		set_new_owner(node)
@@ -104,7 +104,7 @@ func _on_Create_pressed() -> void:
 	if !dir.dir_exists("res://Autoload/"):
 		dir.make_dir("res://Autoload/")
 
-	ResourceSaver.save("res://autoload/AdaptiveAudio.tscn", adaptive_audio_scene)
+	ResourceSaver.save("res://Autoload/AdaptiveAudio.tscn", adaptive_audio_scene)
 
 
 func _on_Load_pressed() -> void:
@@ -133,7 +133,7 @@ func _on_FileDialog_file_selected(path: String) -> void:
 		for j in audio_track.get_node("Content/Layers").get_child_count():
 			var layer_track: AudioStreamPlayer = audio_track.get_node("Content/Layers").get_child(j)
 			var layer_track_ui: LayerTrackUI = audio_track_ui.add_layer_track()
-			layer_track_ui.set_layer_name(layer_track.name)
+			layer_track_ui.set_layer_data(layer_track.name, layer_track.stream.resource_path)
 			layer_track_ui.emit_signal("audio_updated", j, layer_track.name, layer_track.stream.resource_path)
 	
 	adaptive_audio_node.queue_free()

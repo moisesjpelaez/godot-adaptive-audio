@@ -38,6 +38,16 @@ func set_base_track_name(value: String = "BaseTrack") -> void:
 	base_track_ui.track_name_edit.editable = false
 
 
+func set_current_track_name(new_name: String, new_path: String) -> void:
+	current_track_name = new_name
+	
+	base_track_ui.stream_path = new_path
+	base_track_ui.file_dialog.current_path = new_path
+	base_track_ui.file_label.text = base_track_ui.file_dialog.current_file
+	
+	emit_signal("base_track_updated", get_index(), new_name, new_path)
+
+
 func add_layer_track() -> LayerTrackUI:
 	var new_controls: LayerTrackUI = LAYER_TRACK.instance()
 	layers.add_child(new_controls)
@@ -73,8 +83,3 @@ func play_pressed(fade_time: float) -> void:
 func remove_pressed() -> void:
 	emit_signal("track_removed", get_index())
 	queue_free()
-
-
-func set_current_track_name(new_name: String, new_path: String) -> void:
-	current_track_name = new_name
-	emit_signal("base_track_updated", get_index(), new_name, new_path)
