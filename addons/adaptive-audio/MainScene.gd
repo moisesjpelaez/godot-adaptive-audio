@@ -101,10 +101,10 @@ func _on_Create_pressed() -> void:
 	adaptive_audio_scene.pack(adaptive_audio)
 
 	var dir: Directory = Directory.new()
-	if !dir.dir_exists("res://autoload/"):
-		dir.make_dir("res://autoload/")
+	if !dir.dir_exists("res://Autoload/"):
+		dir.make_dir("res://Autoload/")
 
-	ResourceSaver.save("res://autoload/adaptive_audio.tscn", adaptive_audio_scene)
+	ResourceSaver.save("res://autoload/AdaptiveAudio.tscn", adaptive_audio_scene)
 
 
 func _on_Load_pressed() -> void:
