@@ -40,7 +40,7 @@ func transition_to(layer_name: String = "", fade_time: float = 0.5) -> void:
 	if layer_name != "":
 		var layer_track: AudioStreamPlayer = layers.get_node(layer_name)
 		if layer_track.volume_db != 0:
-			tween.interpolate_property(layer_track, "volume_db", layer_track.volume_db, 0, fade_time * 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+			tween.interpolate_property(layer_track, "volume_db", layer_track.volume_db, 0, fade_time, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 			tween.start()
 			yield(tween, "tween_all_completed")
 		
@@ -49,7 +49,7 @@ func transition_to(layer_name: String = "", fade_time: float = 0.5) -> void:
 			if current_layer_name == layer_name: 
 				continue
 			var current_layer_track: AudioStreamPlayer = layers.get_node(current_layer_name)
-			tween.interpolate_property(current_layer_track, "volume_db", current_layer_track.volume_db, -80, fade_time * 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+			tween.interpolate_property(current_layer_track, "volume_db", current_layer_track.volume_db, -80, fade_time, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 		tween.start()
 		yield(tween, "tween_all_completed")
 	
