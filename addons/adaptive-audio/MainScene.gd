@@ -112,11 +112,16 @@ func _on_Load_pressed() -> void:
 
 
 func _on_FileDialog_file_selected(path: String) -> void:
+	var adaptive_audio_node: Node = load(path).instance()
+	
+	if adaptive_audio_node.name != "AdaptiveAudio":
+		printerr("The selected scene isn't an 'AdaptiveAudio' node.")
+		adaptive_audio_node.queue_free()
+		return
+	
 	for audio_track in audio_tracks.get_children():
 		audio_track.remove_pressed()
 		yield(audio_track, "tree_exited")
-
-	var adaptive_audio_node: Node = load(path).instance()
 	
 	for i in adaptive_audio_node.get_children().size():
 		_on_Add_pressed()
