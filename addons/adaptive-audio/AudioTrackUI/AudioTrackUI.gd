@@ -16,7 +16,7 @@ signal track_removed(index)
 const LAYER_TRACK: PackedScene = preload("res://addons/adaptive-audio/AudioTrackUI/LayerTrackUI/LayerTrackUI.tscn")
 
 onready var base_track_ui: BaseTrackUI = $TabContainer/Content/BaseTrackUI
-onready var layers: HBoxContainer = $TabContainer/Content/Panel/Layers/HBoxContainer
+onready var layers: VBoxContainer = $TabContainer/Content/Panel/Layers/VBoxContainer
 onready var add_layer_button: Button = $TabContainer/Content/AddLayer
 
 var current_track_name: String = ""

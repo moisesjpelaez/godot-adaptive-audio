@@ -12,7 +12,7 @@ onready var load_button: Button = buttons_container.get_node("Load")
 onready var file_dialog: FileDialog = $FileDialog
 
 onready var tracks_container: ScrollContainer = $MainPanel/AudioTracks
-onready var audio_tracks: VBoxContainer = tracks_container.get_node("VBoxContainer")
+onready var audio_tracks: HBoxContainer = tracks_container.get_node("HBoxContainer")
 
 onready var adaptive_audio: Node = $AdaptiveAudio
 
