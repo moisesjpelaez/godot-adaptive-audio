@@ -77,7 +77,7 @@ func remove_layer_track(index: int) -> void:
 
 
 func play_pressed(fade_time: float) -> void:
-	emit_signal("track_started", current_track_name, "", fade_time)
+	emit_signal("track_started", current_track_name, fade_time, "")
 
 
 func remove_pressed() -> void:

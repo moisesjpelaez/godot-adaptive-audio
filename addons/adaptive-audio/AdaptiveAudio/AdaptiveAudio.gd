@@ -5,7 +5,7 @@ const AUDIO_TRACK: PackedScene = preload("res://addons/adaptive-audio/AdaptiveAu
 var current_track: AudioTrack
 
 
-func play_track(track_name: String, layer_name: String = "", fade_time: float = 0.5) -> void:
+func play_track(track_name: String, fade_time: float = 0.5, layer_name: String = "") -> void:
 	if current_track != null:
 		if current_track.is_playing:
 			if current_track.name != track_name:
@@ -29,7 +29,7 @@ func transition_to(track_name: String, layer_name: String = "", fade_time: float
 	if current_track.name == track_name:
 		current_track.transition_to(layer_name, fade_time)
 	else:
-		play_track(track_name, layer_name, fade_time)
+		play_track(track_name, fade_time, layer_name)
 
 
 func blend_layer(track_name: String, layer_name: String = "", fade_time: float = 0.5) -> void:
@@ -42,7 +42,7 @@ func blend_layer(track_name: String, layer_name: String = "", fade_time: float =
 	if current_track.name == track_name:
 		current_track.blend_layer(layer_name, fade_time)
 	else:
-		play_track(track_name, layer_name, fade_time)
+		play_track(track_name, fade_time, layer_name)
 
 
 func stop_track(fade_time: float = 0.5) -> void:
